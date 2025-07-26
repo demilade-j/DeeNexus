@@ -98,7 +98,7 @@ export default function NavBar() {
           <Link className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"to ='/'>Home</Link><hr />
           <Link className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"to ='/menu'>Menu</Link><hr />
           <Link className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"to ='/about'>About</Link><hr />
-          <Link className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"to =''>Shop</Link><hr />
+          <Link className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"to ='/shop'>Shop</Link><hr />
           <Link className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"to ='/blog'>Blog</Link><hr />
           <Link onClick={()=>{
             setOpen2(!open2)

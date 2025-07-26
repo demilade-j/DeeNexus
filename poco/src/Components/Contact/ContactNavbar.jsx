@@ -140,7 +140,7 @@ export default function ContactNavBar() {
               </Link>
               <hr />
               <Link
-                to=""
+                to="/shop"
                 className="pl-8 w-full text-white text-[1rem] font-extrabold hover:text-amber-400"
               >
                 Shop
@@ -178,7 +178,10 @@ export default function ContactNavBar() {
                   >
                     <ol>Teams</ol>
                   </Link>
-                  <Link to='/page/History' className="text-xl h-10 border-b-gray-600 border-b-1 flex items-center px-5 hover:text-amber-400 duration-200 text-white font-bold">
+                  <Link
+                    to="/page/History"
+                    className="text-xl h-10 border-b-gray-600 border-b-1 flex items-center px-5 hover:text-amber-400 duration-200 text-white font-bold"
+                  >
                     <ol>History</ol>
                   </Link>
                 </div>

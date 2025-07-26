@@ -1,4 +1,5 @@
 import { ShoppingBasketIcon } from "lucide-react";
+import { useEffect } from "react";
 
 export default function CartOnclick({
   products,
@@ -7,9 +8,28 @@ export default function CartOnclick({
   modal,
   setModal,
 }) {
-  const handleRemove = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  const handleRemove = (name) => {
+    setCart((prevCart) => prevCart.filter((item) => item.name !== name));
   };
+
+      useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  
+    // Cleanup on unmount just in case
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modal]);
+
+  const totalAmount = cart.reduce((acc, item) => {
+  const price = parseFloat(item.price.replace("£", ""));
+  return acc + price * item.quantity;
+}, 0).toFixed(2);
+
 
   return (
     <div>
@@ -32,7 +52,7 @@ export default function CartOnclick({
       {modal && (
         <div>
           <div
-            className={`fixed top-0 right-0 h-full overflow-x-hidden w-80 pr-4 px-3 bg-white text-black border-l-2 border-black z-19000 shadow transform transition-transform duration-190 ${
+            className={`fixed top-0 right-0 h-full overflow-x-hidden w-82 pr-4 px-3 bg-white text-black border-l-2 border-black z-19000 shadow transform transition-transform duration-190 ${
               modal ? "-translate-x-0" : "-translate-x-full"
             }`}
           >
@@ -61,30 +81,36 @@ export default function CartOnclick({
             <hr className="text-gray-300 bg-gray-300" />
 
             {cart && cart.length > 0 ? (
-              <div className="flex flex-col gap-4 py-2 p-2">
+              <div className="flex flex-col gap-4 absolute py-2 p-2 h-130  overflow-x-hidden">
                 {cart.map((item, index) => (
                   <nav
                     key={index}
-                    className="flex items-center w-70 h-25 justify-between border-b-1 border-gray-400"
+                    className="flex items-center w-70 py-1 justify-between border-b-1 border-gray-400"
                   >
                     <span
-                      onClick={() => handleRemove(item.id)}
+                      onClick={() => handleRemove(item.name)}
                       className="h-4 w-4 rounded-full text-amber-400 border-1 border-amber-500 flex items-center pb-1 justify-center"
                     >
                       &times;
                     </span>
+
+                    <span className="flex items-center justify-center rounded-full bg-gray-300">
                     <img
-                      className="size-20 rounded-lg"
+                      className="size-20 rounded-lg scale-80"
                       src={item.src}
                       alt={item.name}
                     />
+                    </span>
                     <div className="text-left w-30">
                       <p className="font-bold">{item.name}</p>
-                      <p className="text-sm text-gray-600">£{(parseFloat(item.price.replace('£', '')) * item.quantity).toFixed(2)}</p>
+                      <p className="text-sm text-gray-600"> £{(parseFloat(item.price.replace('£', '')) * item.quantity).toFixed(2)}</p>
                       <p className="text-gray-800">QTY: {item.quantity}</p>
                     </div>
+
                   </nav>
                 ))}
+                <button className="bottom-20 z-40 fixed w-70 flex items-center justify-start px-3 py-3 font-semibold border-1 border-gray-600">CASHOUT: £{totalAmount} </button>
+                <button className="bottom-4 fixed z-40 px-13 bg-amber-400 py-3 rounded-lg font-semibold">PROCEED TO CASHOUT</button>
               </div>
             ) : (
               <div className="flex flex-col gap-4 p-2 text-center text-gray-600 font-medium">
@@ -101,7 +127,7 @@ export default function CartOnclick({
           e.preventDefault();
           setCart((prevCart) => {
             const existingItemIndex = prevCart.findIndex(
-              (item) => item.id === products.id
+              (item) => item.name === products.name
             );
 
             if (existingItemIndex !== -1) {

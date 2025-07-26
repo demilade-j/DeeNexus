@@ -1,7 +1,9 @@
 import { Search } from 'lucide-react'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function BlogRightHero() {
+    const navigate = useNavigate()
   return (
 <main className='hidden lg:flex md:hidden sm:hidden flex-col w-[30%] px-3'>
             <form action="">
@@ -14,7 +16,7 @@ export default function BlogRightHero() {
             <article className='py-3 px-2 border-1 rounded-xl border-gray-500 flex flex-col gap-3'>
                 <h1 className='font-bold'>Categories</h1>
 
-                <div className='rounded-xl bg-pink-100 px-4 py-2 flex flex-col gap-1'>
+                <div onClick={()=>{navigate('/shop')}} className='rounded-xl bg-pink-100 px-4 py-2 flex flex-col gap-1'>
                     <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Burgers</p>(21)</span>
                     <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Cold Drinks</p>(15)</span>
                     <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Hot Drinks</p>(12)</span>

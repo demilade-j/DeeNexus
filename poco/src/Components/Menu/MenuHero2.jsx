@@ -172,7 +172,7 @@ export default function MenuHero2() {
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 lg:w-[47%] h-75 md:w-full sm:w-full flex items-center justify-center w-full rounded-4xl border-gray-500 px-4 hover:bg-indigo-500 duration-700 cursor-pointer"
+            className="border-1 lg:w-[47%] h-75 md:w-full sm:w-full flex items-center justify-center w-full rounded-4xl border-gray-500 px-4 duration-700 cursor-pointer"
           >
             <main className="w-full h-[90%] flex gap-7 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img className="lg:h-50 lg:w-60 md:w-50 sm:w-40 w-35" src={products.src} alt="" />

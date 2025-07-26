@@ -99,7 +99,7 @@ export default function BigMenu2() {
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 lg:w-[32%] md:w-full sm:w-full w-full h-40 rounded-4xl border-gray-500 px-3 py-2 hover:bg-indigo-500 duration-700 cursor-pointer"
+            className="border-1 lg:w-[32%] md:w-full sm:w-full w-full h-40 rounded-4xl border-gray-500 px-3 py-2 duration-700 cursor-pointer"
           >
             <main className="w-full h-full flex gap-7 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img className="h-23" src={products.src} alt="" />

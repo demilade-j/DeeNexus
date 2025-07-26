@@ -15,7 +15,7 @@ export default function NavLinks() {
         <Link to="/about">
           <li>About</li>
         </Link>
-        <Link to="">
+        <Link to="/shop">
           <li>Shop</li>
         </Link>
         <Link to="/blog">

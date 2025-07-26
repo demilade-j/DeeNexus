@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CartOnclick from "../../CartOnclick";
+import { Link } from "react-router-dom";
 // import {modal,setModal,handleRemove,cart,setCart} from './BigMenu4'
 
 const products = [
@@ -58,7 +59,7 @@ export default function BigMenu3() {
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 lg:w-[32%] w-full hover:bg-indigo-500 duration-700 cursor-pointer h-40 rounded-4xl border-gray-500 px-3 py-2"
+            className="border-1 lg:w-[32%] w-full duration-700 cursor-pointer h-40 rounded-4xl border-gray-500 px-3 py-2"
           >
             <main className="w-full h-full flex gap-10 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img

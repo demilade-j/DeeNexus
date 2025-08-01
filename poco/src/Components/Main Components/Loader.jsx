@@ -1,104 +1,15 @@
-// import React from "react";
-
-// export default function Loader() {
-//   return (
-//     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-purple-900 via-black to-indigo-900 animate-gradientMove">
-//       {/* 3D Cube */}
-//       <div className="relative w-24 h-24 animate-spinSlow">
-//         {[...Array(6)].map((_, i) => (
-//           <div
-//             key={i}
-//             className={`absolute w-full h-full bg-white bg-opacity-10 border border-purple-500 rounded transform 
-//             ${getCubeFaceClass(i)}`}
-//           />
-//         ))}
-//       </div>
-
-//       {/* Glowing Text */}
-//       <div className="absolute bottom-12 text-white text-2xl md:text-4xl font-extrabold animate-pulse tracking-widest drop-shadow-lg glow-text">
-//         LOADING MADNESS...
-//       </div>
-//     </div>
-//   );
-// }
-
-// // Cube face transform styles
-// function getCubeFaceClass(face) {
-//   const base = "origin-center";
-//   switch (face) {
-//     case 0: return `${base} rotate-y-0 translate-z-12`;    // front
-//     case 1: return `${base} rotate-y-90 translate-z-12`;   // right
-//     case 2: return `${base} rotate-y-180 translate-z-12`;  // back
-//     case 3: return `${base} -rotate-y-90 translate-z-12`;  // left
-//     case 4: return `${base} rotate-x-90 translate-z-12`;   // top
-//     case 5: return `${base} -rotate-x-90 translate-z-12`;  // bottom
-//     default: return "";
-//   }
-// }
-
-import React, { useEffect, useState } from 'react';
-
 const LoadingScreen = () => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => (prev >= 100 ? 0 : prev + 0.5));
-    }, 30);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black">
       <div className="relative flex flex-col items-center">
-        {/* Rotating 3D DEENEXUS Logo */}
         <div className="relative w-48 h-48 mb-10">
           <div className="absolute inset-0 border-4 border-neon-blue rounded-lg animate-spin-slow"></div>
           <div className="absolute inset-2 bg-neon-blue/20 rounded-lg shadow-xl shadow-neon-blue/50 transform rotate-45"></div>
           <span className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-white animate-glow tracking-widest">
             DEENEXUS
           </span>
-          {/* Neon Glow Effect */}
           <div className="absolute inset-0 bg-neon-blue/10 rounded-lg animate-pulse blur-md"></div>
         </div>
-
-        {/* Neon Particle Effects */}
-        <div className="absolute w-80 h-80">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-neon-pink rounded-full animate-particle"
-              style={{
-                transform: `rotate(${i * 30}deg)`,
-                animationDelay: `${i * 0.15}s`,
-              }}
-            >
-              <div className="w-2 h-2 bg-neon-pink rounded-full blur-sm"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Waveform Progress Indicator */}
-        <div className="w-80 h-4 bg-gray-900 rounded-full overflow-hidden mt-12 relative">
-          <div
-            className="h-full bg-gradient-to-r from-neon-blue to-neon-pink transition-all duration-500 ease-out"
-            style={{ width: `${progress}%` }}
-          ></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="w-1 h-4 bg-neon-blue/50 mx-0.5 animate-wave"
-                style={{ animationDelay: `${i * 0.05}s` }}
-              ></div>
-            ))}
-          </div>
-        </div>
-
-        {/* Cyberpunk Loading Text */}
-        <p className="mt-8 text-neon-pink text-xl font-mono animate-glitch2 tracking-wider">
-          CONNECTING TO DEENEXUS SERVER...
-        </p>
       </div>
       <style jsx>{`
         .bg-neon-blue { background-color: #00f6ff; }

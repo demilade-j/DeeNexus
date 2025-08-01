@@ -190,6 +190,10 @@ export default function FAQSHero() {
       )}
 
       <main
+      // className={({isActive}) =>
+      // `w-[80%] -mt-2 py-2 text-center cursor-pointer rounded-lg text-2xl font-bold flex items-center justify-between px-5 ${
+      // isActive? "amber-400" : "amber-100" } `
+       //}
         className={`w-[80%] -mt-2 py-2 text-center cursor-pointer rounded-lg text-2xl font-bold flex items-center justify-between px-5 bg-${
           isActive5 ? "amber-400" : "amber-100"
         } duration-1000 ${isOpen5 ? "translate-y-2" : "-translate-y-2"}`}

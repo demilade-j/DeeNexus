@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AfterMenus() {
   return (
     <div className="flex items-center justify-center px-4 lg:gap-4 flex-wrap gap-10 lg:flex">
@@ -23,7 +25,9 @@ export default function AfterMenus() {
       <h2 className="font-extrabold text-4xl">STRAWBERRY CAKE</h2>
       <p className="font-bold text-xl">This weekend only</p>
       <br />
-      <button className="px-5 py-3 bg-amber-400 rounded-xl text-xl text-black z-50 font-bold">SHOP NOW</button>
+      <Link to='/shop' className='z-40'>
+      <button className="px-5 py-3 bg-amber-400 cursor-pointer rounded-xl text-xl text-black z-50 font-bold">SHOP NOW</button>
+      </Link>
       </article>
       <div className="relative mix-blend-overlay">
         <img
@@ -39,7 +43,9 @@ export default function AfterMenus() {
       <h1 className="text-3xl text-amber-100 font-[Norican] tracking-widest">Pasta Menu</h1>
       <h2 className="font-extrabold text-4xl">Super Delicious</h2>
       <p className="font-bold text-xl">Available at affordable prices</p>
-      <button className="px-5 py-3 bg-amber-400 rounded-xl text-xl text-black z-50 font-bold">SHOP NOW</button>
+      <Link to='/shop' className="z-40">
+      <button className="px-5 py-3 bg-amber-400 cursor-pointer rounded-xl text-xl text-black z-50 font-bold">SHOP NOW</button>
+      </Link>
       </article>
       <div className="relative mix-blend-overlay">
         <img

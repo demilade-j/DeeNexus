@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Hero1() {
   return (
     <main className="bg-[#754628] p-20  text-white pt-48 px-10 justify-between md:grid-cols-1 lg:flex grid-cols-1 sm:grid-cols-1 sm:items-center sm:justify-center md:items-center md:justify-center hero-1">
@@ -39,9 +41,11 @@ export default function Hero1() {
         <br />
         <br />
 
-        <button className="bg-amber-400 h-15 w-36 font-bold text-[1.1rem] z-[10] rounded-[0.6rem] text-black hover:bg-white hero-btn ">
+       <Link to='/shop'>
+       <button className="bg-amber-400 h-15 w-36 font-bold text-[1.1rem] z-[10] rounded-[0.6rem] text-black hover:bg-white hero-btn ">
           Order Now
         </button>
+        </Link>
         <img width={100} className=" mt-[-1.4rem] ml-10 z-[1] hero-leaf-btn" src="/leaf 1.webp" alt="" />
         <br />
       </div>

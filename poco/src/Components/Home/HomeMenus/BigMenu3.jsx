@@ -96,7 +96,7 @@ export default function BigMenu3() {
           During winter from <span className="text-black"> 6:30 pm </span>to{" "}
           <span className="text-black">9:00 pm</span>
         </p>
-        <Link to='/menu'><button className="px-6 py-3 rounded-lg bg-amber-400 font-bold text-2xl">
+        <Link to='/menu'><button className="px-6 py-3 rounded-lg cursor-pointer bg-amber-400 font-bold text-2xl">
           View Our Menu
         </button></Link>
       </main>

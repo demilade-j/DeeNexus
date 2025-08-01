@@ -1,5 +1,6 @@
 import { ShoppingBasketIcon } from "lucide-react";
 import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CartOnclick({
   products,
@@ -30,6 +31,7 @@ export default function CartOnclick({
   return acc + price * item.quantity;
 }, 0).toFixed(2);
 
+const navigate = useNavigate()
 
   return (
     <div>
@@ -81,7 +83,7 @@ export default function CartOnclick({
             <hr className="text-gray-300 bg-gray-300" />
 
             {cart && cart.length > 0 ? (
-              <div className="flex flex-col gap-4 absolute py-2 p-2 h-130  overflow-x-hidden">
+              <div className="flex flex-col gap-4 absolute p-2 h-130  overflow-x-hidden">
                 {cart.map((item, index) => (
                   <nav
                     key={index}
@@ -106,11 +108,12 @@ export default function CartOnclick({
                       <p className="text-sm text-gray-600"> £{(parseFloat(item.price.replace('£', '')) * item.quantity).toFixed(2)}</p>
                       <p className="text-gray-800">QTY: {item.quantity}</p>
                     </div>
-
                   </nav>
                 ))}
-                <button className="bottom-20 z-40 fixed w-70 flex items-center justify-start px-3 py-3 font-semibold border-1 border-gray-600">CASHOUT: £{totalAmount} </button>
-                <button className="bottom-4 fixed z-40 px-13 bg-amber-400 py-3 rounded-lg font-semibold">PROCEED TO CASHOUT</button>
+                <main className='w-fit h-fit bg-white py-6 fixed bottom-0 flex flex-col gap-5'>
+                <button className="z-40 w-70 flex items-center justify-between px-3 py-3 font-semibold border-1 border-gray-600">SUBTOTAL PRICE: <span> £{totalAmount} </span></button>
+                <button onClick={()=> navigate('/checkout1')} className="z-40 px-13 bg-amber-400 py-3 cursor-pointer rounded-lg font-semibold">PROCEED TO CHECKOUT</button>
+                </main>
               </div>
             ) : (
               <div className="flex flex-col gap-4 p-2 text-center text-gray-600 font-medium">

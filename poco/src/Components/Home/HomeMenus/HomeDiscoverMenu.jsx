@@ -9,9 +9,11 @@ export default function HomeDiscoverMenu() {
         <p>Each freshly meal is perfectly sized for one person to enjoy at  one sitting. Out fully prepared meals are delivered fresh, and ready to eat in 3 minutes</p>
         <article className="flex gap-7 items-center justify-center">
           <Link to='/menu'><button className="bg-amber-400 px-8 py-3 cursor-pointer font-bold rounded-lg text-xl">View Our Menu</button></Link> 
+          <Link to='/shop'>
           <span className="bg-none flex gap-3 font-medium text-lg items-center justify-center">View All Products
             <button className="bg-green-700 h-7 w-7 flex rounded-md pb-[0.4rem] border-3 border-black font-extrabold text-2xl items-center justify-center">{">"}</button>
           </span>
+          </Link>
         </article>
       </main>
 

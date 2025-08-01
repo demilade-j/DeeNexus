@@ -1,19 +1,12 @@
 import { useState } from "react";
 import CartOnclick from "../../CartOnclick";
-import {
-  BoxesIcon,
-  BoxIcon,
-  Heart,
-  ShoppingBasketIcon,
-  SortAscIcon,
-  SortDesc,
-  Star,
-} from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Heart, Logs, LayoutGrid } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import NavHeader from "../../Home/HomeNavStuff/NavHeader";
 import ContactNavBar from "../../Contact/ContactNavbar";
 import MediumDownNav from "../../Home/HomeNavStuff/MediumDownNav";
 import AfterShopNavbar from "../AfterShopNavbar";
+import BlogRightHero from "../../Blog/BlogRightHero";
 
 const products = [
   {
@@ -630,91 +623,126 @@ export default function ShopBig() {
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState(products);
+  const handleSortChange = (e) => {
+    const value = e.target.value;
+
+    let sorted = [...products];
+
+    if (value === "low-to-high") {
+      sorted.sort(
+        (a, b) =>
+          parseFloat(a.price.replace("£", "")) -
+          parseFloat(b.price.replace("£", ""))
+      );
+    } else if (value === "high-to-low") {
+      sorted.sort(
+        (a, b) =>
+          parseFloat(b.price.replace("£", "")) -
+          parseFloat(a.price.replace("£", ""))
+      );
+    } else if (value === "latest") {
+      sorted = [...products].reverse(); // assuming original is by date
+    } else {
+      sorted = [...products]; // default
+    }
+    setSortedProducts(sorted);
+  };
   return (
     <main>
       <NavHeader />
       <ContactNavBar />
       <AfterShopNavbar />
       <MediumDownNav />
-      <div className="py-15 w-[75%]">
-        <main className="w-[95%] flex items-end ps-10 justify-between">
-        <article className="flex items-center gap-2 text-xl font-semibold">
-            Showing {products.length} products
-        </article>
-
-        <article>
-        <span
-            onClick={() => {
-              navigate("/shop/big");
-            }}
-            className="text-2xl cursor-pointer rotate-90"
-          >
-            ⌨
-          </span>
-
-          <span onClick={() => {
-              navigate("/shop");
-            }} className="text-2xl cursor-pointer">🍱</span>
-
-            <select name="" id="" className="bg-pink-200 h-12 w-60 rounded-sm px-1 outline-none">
-                {/* <optgroup>kkdk</optgroup> */}
-                <option onClick={() => {
-              navigate("/shop/big");
-            }} value="">Default Sorting</option>
-                <option value="">Sort By Latest</option>
-                <option value="">Sort By Price: Low to High</option>
-                <option value="">Sort By Price: High to Low </option>
-            </select>
+      <article className="py-15 flex w-full">
+        <div className="w-[75%]">
+          <main className="w-[95%] flex items-center ps-10 justify-between ">
+            <article className="flex items-center justify-center gap-2 text-md text-gray-500">
+              Showing {sortedProducts.length} products
             </article>
 
-      </main>
-        <br />
-
-        <main className="flex gap-3 w-full ps-2 flex-wrap">
-          {products.map((products) => (
-            <article
-              key={products.id}
-              className=" border-1 w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
-            >
-              <br />
-              <button className="absolute mb-[23rem] ml-[70%] group-hover:text-amber-400 text-white duration-1000">
-                {" "}
-                <Heart fill="grey" size={30} />{" "}
-              </button>
-              <br />
-              <div className="mt-[2rem] w-[95%] group-hover:h-[45%] group-hover:bg-amber-400 group-hover:mt-[-4.2rem] right-0 bg-amber-100 duration-500  h-[25%] rounded-4xl flex items-center justify-center">
-                <img
-                  className="w-[20%] absolute mb-20 group-hover:scale-85 group-hover:mb-[1rem] duration-500"
-                  src={products.src}
-                  alt={`Image of ${products.name}`}
-                />
-              </div>
-              <br />
-              <div className="ml-[-.5rem]">
-                <br />
-                <div className="flex-flex-col gap-6">
-                  <h2 className="font-bold text-lg">{products.name}</h2>
-                </div>
-                <p className="flex flex-wrap">{products.description}</p>
-                <br />
-                <span className="flex gap-6 pl-3 font-extrabold text-lg">
-                  <del className="text-gray-700">{products.deletedPrice}</del>
-                  <main className="text-amber-600">{products.price}</main>
+            <article className="flex gap-10 items-center justify-center">
+              <main className="flex items-center justify-center gap-2">
+                <span
+                  onClick={() => {
+                    navigate("/shop/big");
+                  }}
+                  className="text-2xl cursor-pointer"
+                >
+                  <Logs fill="black" className="text-black" />
                 </span>
-                <br />
-                <CartOnclick
-                  key={products.id}
-                  products={products}
-                  cart={cart}
-                  setCart={setCart}
-                  modal={modal}
-                  setModal={setModal}
-                />
-              </div>
+
+                <span
+                  onClick={() => {
+                    navigate("/shop");
+                  }}
+                  className="text-2xl cursor-pointer"
+                >
+                  <LayoutGrid size={17} className="text-gray-400" />
+                </span>
+              </main>
+
+              <select
+                onChange={handleSortChange}
+                className="bg-pink-200 h-12 w-60 rounded-sm px-1 outline-none"
+              >
+                <option value="default">Default Sorting</option>
+                <option value="latest">Sort By Latest</option>
+                <option value="low-to-high">Sort By Price: Low to High</option>
+                <option value="high-to-low">Sort By Price: High to Low</option>
+              </select>
             </article>
-          ))}
-        </main>
-      </div>
+          </main>
+          <br />
+
+          <main className="flex gap-3 w-full ps-2 flex-wrap">
+            {sortedProducts.map((products) => (
+              <article
+                key={products.id}
+                className=" border-1 w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
+              >
+                <br />
+                <button className="absolute mb-[23rem] ml-[70%] group-hover:text-amber-400 text-white duration-1000">
+                  {" "}
+                  <Heart fill="grey" size={30} />{" "}
+                </button>
+                <br />
+                <div className="mt-[2rem] w-[95%] group-hover:h-[45%] group-hover:bg-amber-400 group-hover:mt-[-4.2rem] right-0 bg-amber-100 duration-500  h-[25%] rounded-4xl flex items-center justify-center">
+                  <img
+                    className="w-[20%] absolute mb-20 group-hover:scale-85 group-hover:mb-[1rem] duration-500"
+                    src={products.src}
+                    alt={`Image of ${products.name}`}
+                  />
+                </div>
+                <br />
+                <div className="ml-[-.5rem]">
+                  <br />
+                  <div className="flex-flex-col gap-6">
+                    <h2 className="font-bold text-lg">{products.name}</h2>
+                  </div>
+                  <p className="flex flex-wrap">{products.description}</p>
+                  <br />
+                  <span className="flex gap-6 pl-3 font-extrabold text-lg">
+                    <del className="text-gray-700">{products.deletedPrice}</del>
+                    <main className="text-amber-600">{products.price}</main>
+                  </span>
+                  <br />
+                  <CartOnclick
+                    key={products.id}
+                    products={products}
+                    cart={cart}
+                    setCart={setCart}
+                    modal={modal}
+                    setModal={setModal}
+                  />
+                </div>
+              </article>
+            ))}
+          </main>
+        </div>
+
+        <BlogRightHero />
+      </article>
     </main>
   );
 }

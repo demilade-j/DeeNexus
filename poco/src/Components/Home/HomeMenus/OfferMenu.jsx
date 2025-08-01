@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function OfferMenu() {
   return (
     <div className='bg-red-600 gap-40 p-17 md:grid-cols-1 lg:flex items-center'>
@@ -20,7 +22,7 @@ export default function OfferMenu() {
             <span className='flex items-center justify-center px-8 py-[0.7rem] text-white font-bold bg-red-400 rounded-2xl'>Secs</span>
             </article>
 
-            <button className='px-8 py-3 rounded-lg bg-amber-400 font-bold'>Discover Now</button>
+            <Link to='/blog'><button className='cursor-pointer px-8 py-3 rounded-lg bg-amber-400 font-bold'>Discover Now</button></Link>
         </main>
     </div>
   )

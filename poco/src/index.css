@@ -225,6 +225,24 @@ animation: try10 1s forwards linear;
     }
 }
 
+.checkout1-Open{
+    animation: checkout1-Open 1s linear forwards;
+}
+
+@keyframes checkout1-Open{
+    0%{
+        transform: translateY(-1rem);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
   @keyframes spinSlow {
     0% {
       transform: rotateX(0deg) rotateY(0deg);

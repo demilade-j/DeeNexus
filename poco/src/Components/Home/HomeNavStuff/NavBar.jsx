@@ -1,4 +1,5 @@
 import {
+  Logs,
   Menu,
   MenuIcon,
   Phone,
@@ -76,7 +77,7 @@ export default function NavBar() {
         onClick={() => setOpen(true)}
         className=" text-black rounded md:flex"
       >
-        <MenuIcon size={40} className="hover:text-amber-400"/>
+        <Logs size={40} className="hover:text-amber-400"/>
       </button>
       {open && (
         <div

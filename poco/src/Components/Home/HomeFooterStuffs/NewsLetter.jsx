@@ -23,6 +23,7 @@ export default function NewsLetter() {
             
           }} type="email" placeholder="Enter your email..." name="" id="" required />
           <button onClick={(e) =>{
+            toast.dismiss()
             e.preventDefault()
              if(email === ''){
                toast.error('Enter a valid field OR try inputing again')

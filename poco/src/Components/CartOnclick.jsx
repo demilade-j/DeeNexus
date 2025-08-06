@@ -1,3 +1,4 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ShoppingBasketIcon } from "lucide-react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,25 +14,27 @@ export default function CartOnclick({
     setCart((prevCart) => prevCart.filter((item) => item.name !== name));
   };
 
-      useEffect(() => {
+  useEffect(() => {
     if (modal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-  
+
     // Cleanup on unmount just in case
     return () => {
       document.body.style.overflow = "";
     };
   }, [modal]);
 
-  const totalAmount = cart.reduce((acc, item) => {
-  const price = parseFloat(item.price.replace("£", ""));
-  return acc + price * item.quantity;
-}, 0).toFixed(2);
+  const totalAmount = cart
+    .reduce((acc, item) => {
+      const price = parseFloat(item.price.replace("£", ""));
+      return acc + price * item.quantity;
+    }, 0)
+    .toFixed(2);
 
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -97,27 +100,45 @@ const navigate = useNavigate()
                     </span>
 
                     <span className="flex items-center justify-center rounded-full bg-gray-300">
-                    <img
-                      className="size-20 rounded-lg scale-80"
-                      src={item.src}
-                      alt={item.name}
-                    />
+                      <img
+                        className="size-20 rounded-lg scale-80"
+                        src={item.src}
+                        alt={item.name}
+                      />
                     </span>
                     <div className="text-left w-30">
                       <p className="font-bold">{item.name}</p>
-                      <p className="text-sm text-gray-600"> £{(parseFloat(item.price.replace('£', '')) * item.quantity).toFixed(2)}</p>
+                      <p className="text-sm text-gray-600">
+                        £
+                        {(
+                          parseFloat(item.price.replace("£", "")) *
+                          item.quantity
+                        ).toFixed(2)}
+                      </p>
                       <p className="text-gray-800">QTY: {item.quantity}</p>
                     </div>
                   </nav>
                 ))}
-                <main className='w-fit h-fit bg-white py-6 fixed bottom-0 flex flex-col gap-5'>
-                <button className="z-40 w-70 flex items-center justify-between px-3 py-3 font-semibold border-1 border-gray-600">SUBTOTAL PRICE: <span> £{totalAmount} </span></button>
-                <button onClick={()=> navigate('/checkout1')} className="z-40 px-13 bg-amber-400 py-3 cursor-pointer rounded-lg font-semibold">PROCEED TO CHECKOUT</button>
+                <main className="w-fit h-fit bg-white py-6 fixed bottom-0 flex flex-col gap-5">
+                  <button className="z-40 w-70 flex items-center justify-between px-3 py-3 font-semibold border-1 border-gray-600">
+                    SUBTOTAL PRICE: <span> £{totalAmount} </span>
+                  </button>
+                  <button
+                    onClick={() => navigate("/checkout1")}
+                    className="z-40 px-13 bg-amber-400 py-3 cursor-pointer rounded-lg font-semibold"
+                  >
+                    PROCEED TO CHECKOUT
+                  </button>
                 </main>
               </div>
             ) : (
               <div className="flex flex-col gap-4 p-2 text-center text-gray-600 font-medium">
                 🛒 Cart is Empty
+                <DotLottieReact className="h-150 absolute ml-12 top-[-6%] w-[60%]"
+src="https://lottie.host/a624cba5-ace3-4b4b-ae5f-05157d308954/96DOD13mWR.lottie"
+loop
+autoplay
+/>
               </div>
             )}
           </div>

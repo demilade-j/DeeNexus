@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../src/index.css";
@@ -6,19 +6,21 @@ import "../src/index.css";
 
 
 
-const App = lazy(() => import("./App"));
-const Home = lazy(() => import("./Components/Main Components/Home"));
-const Menu = lazy(() => import("./Components/Main Components/Menu"));
-const Contact = lazy(() => import("./Components/Main Components/Contact"));
-const Team = lazy(() => import("./Components/Pages/Teams/Team"));
-const History = lazy(() => import("./Components/Pages/History/History"));
-const FAQS = lazy(() => import("./Components/Pages/FAQS/FAQS"));
-const About = lazy(() => import("./Components/Main Components/About"));
-const Blog = lazy(() => import("./Components/Main Components/Blog"));
-const Shop = lazy(() => import("./Components/Main Components/Shop"));
-const LazyLoader = lazy(() => import("./Components/Main Components/Loader"));
-const ShopBig = lazy(() =>import("./Components/Shop/ShopMain/ShopBig"))
-const MainCheckout = lazy(() =>import("./Components/Main Components/MainCheckout"))
+import App from "./App";
+import Home from "./Components/Main Components/Home";
+import Menu from "./Components/Main Components/Menu";
+import Contact from "./Components/Main Components/Contact";
+import Team from "./Components/Pages/Teams/Team";
+import History from "./Components/Pages/History/History";
+import FAQS from "./Components/Pages/FAQS/FAQS";
+import About from "./Components/Main Components/About";
+import Blog from "./Components/Main Components/Blog";
+import Shop from "./Components/Main Components/Shop";
+import LazyLoader from "./Components/Main Components/Loader";
+import ShopBig from "./Components/Shop/ShopMain/ShopBig";
+import MainCheckout from "./Components/Main Components/MainCheckout";
+import SucOrder from "./Components/Main Components/SucOrder";
+
 
 
 // const SuspenseWithMinDelay = ({ children, fallback, minDelay = 3000, maxDelay = 10000 }) => {
@@ -66,6 +68,7 @@ const router = createBrowserRouter([
       { path: "/shop/big", element: <ShopBig /> },
       { path: "/loader", element: <LazyLoader /> },
       { path: "/checkout1", element: <MainCheckout /> },
+      { path: "/sucOrder", element: <SucOrder /> },
     ],
   },
 ]);

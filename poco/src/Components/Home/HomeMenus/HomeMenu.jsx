@@ -2,6 +2,7 @@ import { Heart, ShoppingBasketIcon, Star } from "lucide-react";
 import CartOnclick from "../../CartOnclick";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import FavOnclick from "../../FavOnclick";
 
 const productsApi = [
   {
@@ -50,8 +51,9 @@ const productsApi = [
 
 export default function HomeMenu() {
   const [modal, setModal] = useState(false);
-    // const navigate = useNavigate();
-    const [cart, setCart] = useState([]);
+  const [modal2, setModal2] = useState(false);
+  // const navigate = useNavigate();
+  const [cart, setCart] = useState([]);
   return (
     <div className="p-11 bg-cyan-950 lg:flex grid-cols-1 sm:grid-cols-1 md:grid-cols-1  items-center justify-center gap-38">
       <main className="flex flex-col items-center justify-center">
@@ -63,10 +65,10 @@ export default function HomeMenu() {
         </h2>
         <br />
         <br />
-        <Link to='/menu'>
-        <button className="bg-amber-400 w-50 h-13 rounded-lg font-bold text-lg hero-btn cursor-pointer">
-          VIEW ALL PRODUCTS
-        </button>
+        <Link to="/menu">
+          <button className="bg-amber-400 w-50 h-13 rounded-lg font-bold text-lg hero-btn cursor-pointer">
+            VIEW ALL PRODUCTS
+          </button>
         </Link>
         <br />
         <img className="hero-leaf-btn" src="/h7 chili 4.png" alt="" />
@@ -78,9 +80,15 @@ export default function HomeMenu() {
             className=" min-w-65 relative rounded-4xl h-120 bg-white cursor-pointer flex flex-col items-center justify-center group"
           >
             <br />
-            <button className="absolute mb-[23rem] ml-45 group-hover:text-amber-400 text-white duration-1000">
-              {" "}
-              <Heart fill="grey" size={30} />{" "}
+            <button className="absolute mb-[20rem] z-40 ml-57 text-black duration-1000">
+              <FavOnclick
+                key={products.id}
+                products={products}
+                cart={cart}
+                setCart={setCart}
+                modal2={modal2}
+                setModal2={setModal2}
+              />
             </button>
             <br />
             <div className="mt-[2rem] w-60 group-hover:h-55 group-hover:bg-amber-400 group-hover:mt-[-4.2rem] right-0 bg-amber-100 duration-500  h-30 rounded-4xl flex items-center justify-center">
@@ -110,14 +118,14 @@ export default function HomeMenu() {
               <main className="text-amber-400 font-bold text-2xl flex gap-22">
                 {products.price}
               </main>
-                <CartOnclick
-                  key={products.id}
-                  products={products}
-                  cart={cart}
-                  setCart={setCart}
-                  modal={modal}
-                  setModal={setModal}
-                />
+              <CartOnclick
+                key={products.id}
+                products={products}
+                cart={cart}
+                setCart={setCart}
+                modal={modal}
+                setModal={setModal}
+              />
             </div>
           </article>
         ))}

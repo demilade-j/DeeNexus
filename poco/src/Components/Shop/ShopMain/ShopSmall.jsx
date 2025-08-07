@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import FavOnclick from "../../FavOnclick";
 import FavOnclick from "../../FavOnclick";
 import CartOnclick from "../../CartOnclick";
@@ -621,7 +621,11 @@ export default function ShopSmall() {
   const [modal2, setModal2] = useState(false);
   const navigate = useNavigate();
   const [favorites, setFavorites] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    // Load cart from localStorage if available
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [sortedProducts, setSortedProducts] = useState(products);
   const handleSortChange = (e) => {
     const value = e.target.value;
@@ -648,6 +652,9 @@ export default function ShopSmall() {
     setSortedProducts(sorted);
   };
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   return (
     <div className="py-15 w-[75%]">
       <main className="w-[95%] flex items-center ps-10 justify-between ">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartOnclick from "../../CartOnclick";
 import { Link } from "react-router-dom";
 // import {modal,setModal,handleRemove,cart,setCart} from './BigMenu4'
@@ -52,7 +52,15 @@ const products = [
 
 export default function BigMenu3() {
   const [modal, setModal] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+      // Load cart from localStorage if available
+      const stored = localStorage.getItem("cart");
+      return stored ? JSON.parse(stored) : [];
+    });
+  
+    useEffect(() => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
   return (
     <div className="p-1 w-full">
       <main className="flex gap-6 flex-wrap">

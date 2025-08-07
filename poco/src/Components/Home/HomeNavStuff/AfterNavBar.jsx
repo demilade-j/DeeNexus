@@ -4,7 +4,6 @@ import CartOnclick from '../../CartOnclick';
 
 export default function AfterNavBar() {
   const [showBar, setShowBar] = useState(true);
-  const [cart,setCart] = useState(0) 
   const lastScrollY = useRef(0);
   useEffect(() => {
     function handleScroll() {
@@ -61,16 +60,13 @@ export default function AfterNavBar() {
           </main>
         </article>
 
-        <article className="flex gap-6">
+        {/* <article className="flex gap-6">
           <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400"><User fill="black"/></span>
           <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400"><Heart fill="black"/></span>
           <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400"><LucideShoppingBasket fill="black"/>
-          <span className='px-0.5 py-0.5 absolute rounded-full flex items-center justify-center bg-amber-500' onClick={() => {
-            {setCart(cart+1)}
-          }}>{cart}</span>
           </span>
           
-        </article>
+        </article> */}
     </div>
       </div>
   )

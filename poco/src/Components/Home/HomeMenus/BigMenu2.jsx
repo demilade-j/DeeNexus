@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartOnclick from "../../CartOnclick";
 import { Link } from "react-router-dom";
 
@@ -91,7 +91,15 @@ const products = [
 
 export default function BigMenu2() {
   const [modal, setModal] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+      // Load cart from localStorage if available
+      const stored = localStorage.getItem("cart");
+      return stored ? JSON.parse(stored) : [];
+    });
+  
+    useEffect(() => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
   //  const { addToCart } = useCart();
   return (
     <div className="w-full p-1">

@@ -1,6 +1,6 @@
 import { Heart, ShoppingBasketIcon, Star } from "lucide-react";
 import CartOnclick from "../../CartOnclick";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FavOnclick from "../../FavOnclick";
 
@@ -54,7 +54,15 @@ export default function HomeMenu() {
   const [modal2, setModal2] = useState(false);
   const [favorites, setFavorites] = useState([]);
   // const navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    // Load cart from localStorage if available
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   return (
     <div className="p-11 bg-cyan-950 lg:flex grid-cols-1 sm:grid-cols-1 md:grid-cols-1  items-center justify-center gap-38">
       <main className="flex flex-col items-center justify-center">

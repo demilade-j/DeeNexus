@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartOnclick from "../../CartOnclick";
 import FavOnclick from "../../FavOnclick";
 import { Heart, Logs, LayoutGrid } from "lucide-react";
@@ -624,7 +624,11 @@ export default function ShopBig() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    // Load cart from localStorage if available
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [favorites, setFavorites] = useState([]);
   const [sortedProducts, setSortedProducts] = useState(products);
   const handleSortChange = (e) => {
@@ -651,6 +655,11 @@ export default function ShopBig() {
     }
     setSortedProducts(sorted);
   };
+
+    useEffect(() => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
+
   return (
     <main>
       <NavHeader />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartOnclick from "../../CartOnclick";
 import { Link } from "react-router-dom";
 
@@ -94,10 +94,20 @@ const products = [
 
 export default function BigMenu4() {
   const [modal, setModal] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    // Load cart from localStorage if available
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="p-1 w-full">
+      <br />
+      <br />
       <main className="flex gap-6 flex-wrap">
         {products.map((products) => (
           <article
@@ -110,14 +120,14 @@ export default function BigMenu4() {
                 src={products.src}
                 alt={`Image of ${products.name}`}
               />
-            <div className="flex-flex-col gap-6">
-              <h2 className="font-bold text-lg">{products.name}</h2>
+              <div className="flex-flex-col gap-6">
+                <h2 className="font-bold text-lg">{products.name}</h2>
 
-              <span className="flex gap-2 font-extrabold text-lg">
-                <del className="text-gray-700">{products.deletedPrice}</del>
-                <main className="text-amber-600">{products.price}</main>
-              </span>
-            </div>
+                <span className="flex gap-2 font-extrabold text-lg">
+                  <del className="text-gray-700">{products.deletedPrice}</del>
+                  <main className="text-amber-600">{products.price}</main>
+                </span>
+              </div>
 
               <CartOnclick
                 key={products.id}
@@ -138,9 +148,11 @@ export default function BigMenu4() {
           During winter from <span className="text-black"> 6:30 pm </span>to{" "}
           <span className="text-black">9:00 pm</span>
         </p>
-        <Link to='/menu'><button className="px-6 py-3 rounded-lg cursor-pointer bg-amber-400 font-bold text-2xl">
-          View Our Menu
-        </button></Link>
+        <Link to="/menu">
+          <button className="px-6 py-3 rounded-lg cursor-pointer bg-amber-400 font-bold text-2xl">
+            View Our Menu
+          </button>
+        </Link>
       </main>
       <br />
       <br />

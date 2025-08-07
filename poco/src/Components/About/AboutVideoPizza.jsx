@@ -1,6 +1,7 @@
 import { Play, PlayIcon } from 'lucide-react'
 import React, { useState } from 'react';
 import { useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 export default function AboutVideoPizza() {
     const [open ,setOpen] =useState(false)
@@ -24,7 +25,7 @@ export default function AboutVideoPizza() {
         </div>
         <h1 className='text-white text-6xl font-bold text-center'>Make the thing Anything is Possible</h1>
         <h2 className='text-white text-2xl'>Enjoy our luscious dishes wherever you want</h2>
-        <button className='bg-amber-400 px-8 py-3 rounded-md font-bold'>ORDER NOW</button>
+        <Link to='/shop'><button className='bg-amber-400 px-8 py-3 rounded-md font-bold cursor-pointer'>ORDER NOW</button></Link>
     </article>
 
     <main className=" mix-blend-overlay relative">

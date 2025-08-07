@@ -52,6 +52,7 @@ const productsApi = [
 export default function HomeMenu() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   // const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   return (
@@ -82,10 +83,9 @@ export default function HomeMenu() {
             <br />
             <button className="absolute mb-[20rem] z-40 ml-57 text-black duration-1000">
               <FavOnclick
-                key={products.id}
-                products={products}
-                cart={cart}
-                setCart={setCart}
+                products={products} // or item
+                favorites={favorites}
+                setFavorites={setFavorites}
                 modal2={modal2}
                 setModal2={setModal2}
               />

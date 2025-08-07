@@ -6,11 +6,10 @@ export default function BlogRightHero() {
     const navigate = useNavigate()
   return (
 <main className='hidden lg:flex md:hidden sm:hidden flex-col w-[30%] px-3'>
-            <form action="">
-                <input type="search" className='border-amber-400 h-12 w-full rounded-3xl border-1 flex items-center px-7 pe-15 ouline-1 outline-amber-400' placeholder='Search...' />
-                <span><Search className='hover:text-amber-400 absolute -mt-9 ml-[24.5%]'/></span>
-            </form>
-            <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
             <aside className='px-2'>
             <article className='py-3 px-2 border-1 rounded-xl border-gray-500 flex flex-col gap-3'>

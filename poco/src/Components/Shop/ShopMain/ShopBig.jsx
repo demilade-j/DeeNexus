@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CartOnclick from "../../CartOnclick";
+import FavOnclick from "../../FavOnclick";
 import { Heart, Logs, LayoutGrid } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NavHeader from "../../Home/HomeNavStuff/NavHeader";
@@ -621,8 +622,10 @@ const products = [
 
 export default function ShopBig() {
   const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [sortedProducts, setSortedProducts] = useState(products);
   const handleSortChange = (e) => {
     const value = e.target.value;
@@ -702,9 +705,14 @@ export default function ShopBig() {
                 className=" border-1 w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
               >
                 <br />
-                <button className="absolute mb-[23rem] ml-[70%] group-hover:text-amber-400 text-white duration-1000">
-                  {" "}
-                  <Heart fill="grey" size={30} />{" "}
+                <button className="absolute mb-[19rem] z-40 ml-200 text-black duration-1000">
+                  <FavOnclick
+                    products={products} // or item
+                    favorites={favorites}
+                    setFavorites={setFavorites}
+                    modal2={modal2}
+                    setModal2={setModal2}
+                  />
                 </button>
                 <br />
                 <div className="mt-[2rem] w-[95%] group-hover:h-[45%] group-hover:bg-amber-400 group-hover:mt-[-4.2rem] right-0 bg-amber-100 duration-500  h-[25%] rounded-4xl flex items-center justify-center">

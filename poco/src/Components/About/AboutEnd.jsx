@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function AboutEnd() {
   return (
@@ -7,7 +8,7 @@ export default function AboutEnd() {
         <h1 className='text-amber-400 text-[1.8rem]'>We guarantee</h1>
         <h2 className="text-white font-bold text-7xl text-center">30 Minutes Delivery!</h2>
         <p className="text-center text-[1.2rem] text-white">If you’re having a meeting, working late at night and need an extra push. Let us know and we will be there</p>
-        <button className="px-6 py-3 rounded-md bg-amber-400 font-bold">MAKE AN ORDER</button>
+        <Link to='/shop/big'><button className="px-6 py-3 rounded-md cursor-pointer bg-amber-400 font-bold">MAKE AN ORDER</button></Link>
       </main>
 
       <main className=" mix-blend-overlay relative h-150">

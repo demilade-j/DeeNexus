@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function AfterAboutVideo() {
   return (
@@ -16,9 +17,10 @@ export default function AfterAboutVideo() {
             animal by-products. Plus, our Bites are made with 100% chicken
             breast meat.
           </p>
-          <button className="bg-amber-400 py-3 w-38 rounded-md font-bold">
+          <Link className="w-fit" to='/shop'><button className="cursor-pointer bg-amber-400 py-3 w-38 rounded-md font-bold">
             ORDER NOW
           </button>
+          </Link>
         </article>
 
           <img className="lg:w-[40%] md:w-[40%] sm:w-full " src="/about-imager-5.webp" alt="" />
@@ -33,9 +35,10 @@ export default function AfterAboutVideo() {
           <p className="text-gray-500 text-[1.1rem]">
             Some of the world’s best cheese is made close to home! All our deliciously melty Mozzarella is made with 100% Canadian milk. We’re proud to support Canadian dairy farmers.
           </p>
-          <button className="bg-amber-400 py-3 w-38 rounded-md font-bold">
+          <Link className="w-fit" to='/shop'><button className="cursor-pointer bg-amber-400 py-3 w-38 rounded-md font-bold">
             ORDER NOW
           </button>
+          </Link>
         </article>
 
           <img className="lg:w-[40%] md:w-[40%] sm:w-full " src="/about-imager-6.webp" alt="" />
@@ -50,9 +53,10 @@ export default function AfterAboutVideo() {
           <p className="text-gray-500 text-[1.1rem]">
             Quality is our #1 ingredient. That’s why our Chicken Wings, Chicken Bites and Grilled Chicken Topping are made from chickens raised without antibiotics and fed an all vegetable-grain diet, with no animal by-products. Plus, our Bites are made with 100% chicken breast meat.
           </p>
-          <button className="bg-amber-400 py-3 w-38 rounded-md font-bold">
+          <Link className="w-fit" to='/shop'><button className="cursor-pointer bg-amber-400 py-3 w-38 rounded-md font-bold">
             ORDER NOW
           </button>
+          </Link>
           <svg stroke="yellow" fill="yellow" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"></svg>
         </article>
 

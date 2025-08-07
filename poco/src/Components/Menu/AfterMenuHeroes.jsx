@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function AfterMenuHeroes() {
   return (
@@ -11,9 +12,10 @@ export default function AfterMenuHeroes() {
           <p className="text-center mb-6 text-[1.2rem] text-white">
             Enjoy our luscious dishes wherever you want
           </p>
-          <button className="px-6 py-3 rounded-md bg-amber-400 font-bold">
+          <Link to='/shop'><button className="px-6 py-3 cursor-pointer rounded-md bg-amber-400 font-bold">
             ORDER NOW
           </button>
+          </Link>
         </article>
 
         <article className=" mix-blend-overlay relative w-fit">

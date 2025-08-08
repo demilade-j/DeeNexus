@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
-import CartOnclick from "../../CartOnclick";
-import FavOnclick from "../../FavOnclick";
-import { Heart, Logs, LayoutGrid } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import NavHeader from "../../Home/HomeNavStuff/NavHeader";
-import ContactNavBar from "../../Contact/ContactNavbar";
-import MediumDownNav from "../../Home/HomeNavStuff/MediumDownNav";
-import AfterShopNavbar from "../AfterShopNavbar";
-import BlogRightHero from "../../Blog/BlogRightHero";
+import CartOnclick from "../CartOnclick";
+import FavOnclick from "../FavOnclick";
 
 const products = [
   {
@@ -620,109 +614,67 @@ const products = [
   },
 ];
 
-export default function ShopBig() {
+export default function SearchBar() {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const navigate = useNavigate();
-  const [cart, setCart] = useState(() => {
-    // Load cart from localStorage if available
-    const stored = localStorage.getItem("cart");
-    return stored ? JSON.parse(stored) : [];
-  });
+
+  // Filter logic
+  const filteredSearch = products.filter((item) =>
+    `${item.name}`.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const [favorites, setFavorites] = useState(() => {
     // Load favorites from localStorage if available
     const stored = localStorage.getItem("favorites");
     return stored ? JSON.parse(stored) : [];
   });
-
+  
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
-  const [sortedProducts, setSortedProducts] = useState(products);
-  const handleSortChange = (e) => {
-    const value = e.target.value;
+  const [cart, setCart] = useState(() => {
+      // Load cart from localStorage if available
+      const stored = localStorage.getItem("cart");
+      return stored ? JSON.parse(stored) : [];
+    });
 
-    let sorted = [...products];
-
-    if (value === "low-to-high") {
-      sorted.sort(
-        (a, b) =>
-          parseFloat(a.price.replace("£", "")) -
-          parseFloat(b.price.replace("£", ""))
-      );
-    } else if (value === "high-to-low") {
-      sorted.sort(
-        (a, b) =>
-          parseFloat(b.price.replace("£", "")) -
-          parseFloat(a.price.replace("£", ""))
-      );
-    } else if (value === "latest") {
-      sorted = [...products].reverse(); // assuming original is by date
-    } else {
-      sorted = [...products]; // default
-    }
-    setSortedProducts(sorted);
-  };
-
+    
     useEffect(() => {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
-    <main>
-      <NavHeader />
-      <ContactNavBar />
-      <AfterShopNavbar />
-      <MediumDownNav />
-      <article className="py-15 flex w-full">
-        <div className="w-[75%]">
-          <main className="w-[95%] flex items-center ps-10 justify-between ">
-            <article className="flex items-center justify-center gap-2 text-md text-gray-500">
-              Showing {sortedProducts.length} products
-            </article>
+    <div className="flex items-center justify-between bg-white px-20 w-full py-10">
+      <form action="" className="flex flex-col gap-5 w-full">
+        <span
+          onClick={() => navigate(-1)}
+          className="text-amber-500 text-4xl absolute font-bold ml-5 cursor-pointer"
+        >
+          &times;
+        </span>
+        <input
+          type="search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search Products Here..."
+          className="w-full h-12 rounded-md shadow-md border-2 px-20 border-amber-400 outline-amber-400"
+        />
+        <br />
+        <br />
 
-            <article className="flex gap-10 items-center justify-center">
-              <main className="flex items-center justify-center gap-2">
-                <span
-                  onClick={() => {
-                    navigate("/shop/big");
-                  }}
-                  className="text-2xl cursor-pointer"
-                >
-                  <Logs fill="black" className="text-black" />
-                </span>
-
-                <span
-                  onClick={() => {
-                    navigate("/shop");
-                  }}
-                  className="text-2xl cursor-pointer"
-                >
-                  <LayoutGrid size={17} className="text-gray-400" />
-                </span>
-              </main>
-
-              <select
-                onChange={handleSortChange}
-                className="bg-pink-200 h-12 w-60 rounded-sm px-1 outline-none"
-              >
-                <option value="default">Default Sorting</option>
-                <option value="latest">Sort By Latest</option>
-                <option value="low-to-high">Sort By Price: Low to High</option>
-                <option value="high-to-low">Sort By Price: High to Low</option>
-              </select>
-            </article>
-          </main>
-          <br />
-
+        {filteredSearch.length === 0 ? (
+          <p>No results found.</p>
+        ) : (
           <main className="flex gap-3 w-full ps-2 flex-wrap">
-            {sortedProducts.map((products) => (
+            {filteredSearch.map((products) => (
               <article
                 key={products.id}
-                className=" border-1 w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
+                className=" border-1 lg:w-[23.9%] w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
               >
                 <br />
-                <button className="absolute mb-[19rem] z-40 ml-200 text-black duration-1000">
+                <button className="absolute mb-[19rem] z-40 ml-50 text-black duration-1000">
                   <FavOnclick
                     products={products} // or item
                     favorites={favorites}
@@ -731,27 +683,24 @@ export default function ShopBig() {
                     setModal2={setModal2}
                   />
                 </button>
-                <br />
+
                 <div className="mt-[2rem] w-[95%] group-hover:h-[45%] group-hover:bg-amber-400 group-hover:mt-[-4.2rem] right-0 bg-amber-100 duration-500  h-[25%] rounded-4xl flex items-center justify-center">
                   <img
-                    className="w-[20%] absolute mb-20 group-hover:scale-85 group-hover:mb-[1rem] duration-500"
+                    className="w-[60%] absolute mb-20 group-hover:scale-85 group-hover:mb-[1rem] duration-500"
                     src={products.src}
                     alt={`Image of ${products.name}`}
                   />
                 </div>
                 <br />
+
                 <div className="ml-[-.5rem]">
-                  <br />
-                  <div className="flex-flex-col gap-6">
-                    <h2 className="font-bold text-lg">{products.name}</h2>
-                  </div>
+                  <h2 className="font-bold text-lg">{products.name}</h2>
                   <p className="flex flex-wrap">{products.description}</p>
                   <br />
-                  <span className="flex gap-6 pl-3 font-extrabold text-lg">
+                  <span className="flex gap-6 pl-1 font-extrabold text-lg">
                     <del className="text-gray-700">{products.deletedPrice}</del>
                     <main className="text-amber-600">{products.price}</main>
                   </span>
-                  <br />
                   <CartOnclick
                     key={products.id}
                     products={products}
@@ -764,10 +713,8 @@ export default function ShopBig() {
               </article>
             ))}
           </main>
-        </div>
-
-        <BlogRightHero />
-      </article>
-    </main>
+        )}
+      </form>
+    </div>
   );
 }

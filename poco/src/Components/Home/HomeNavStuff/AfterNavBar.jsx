@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Gift, Heart, LucideShoppingBasket, Search,Truck, User } from "lucide-react";
-import CartOnclick from '../../CartOnclick';
+import { Bike, Gift, Heart, LucideShoppingBasket, Search,Truck, User } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 export default function AfterNavBar() {
+  const navigate = useNavigate();
   const [showBar, setShowBar] = useState(true);
   const lastScrollY = useRef(0);
   useEffect(() => {
@@ -10,10 +11,8 @@ export default function AfterNavBar() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
-        // Scrolling down and scrolled more than 50px: hide bar
         setShowBar(false);
       } else {
-        // Scrolling up: show bar
         setShowBar(true);
       }
 
@@ -40,8 +39,10 @@ export default function AfterNavBar() {
         <h1 className="text-green-700 font-extrabold text-2xl">DeeNexus</h1>
 
         <article className="flex items-center justify-between">
-        <input type="search" className="h-10 w-2xs ps-10 pe-11 outline-amber-400 border-amber-400 border-2 rounded-3xl" placeholder="Search products" />
-        <Search className="absolute text-black mx-56 pointer transition-all ease-in-out 1s hover:text-amber-500 cursor-pointer"/>
+        <input onClick={()=>{
+          navigate('/search')
+        }} type="search" className="h-10 w-2xs ps-10 pe-11 outline-amber-400 border-amber-400 border-2 rounded-3xl" placeholder="Search products" />
+        {/* <Search className="absolute text-black mx-56 pointer transition-all ease-in-out 1s hover:text-amber-500 cursor-pointer"/> */}
         </article>
 
         <article className="flex gap-4 items-center justify-between">
@@ -57,6 +58,14 @@ export default function AfterNavBar() {
           <main className="flex flex-col justify-center">
             <span>Daily Offers</span>
             <span>Discount 20% off</span>
+          </main>
+        </article>
+
+        <article className="flex gap-4 items-center">
+          <main><Bike size={39}/></main>
+          <main className="flex flex-col justify-center">
+            <span>Big Offers</span>
+            <span>Best of the best</span>
           </main>
         </article>
 

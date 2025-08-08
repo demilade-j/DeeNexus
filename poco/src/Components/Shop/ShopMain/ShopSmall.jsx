@@ -620,7 +620,16 @@ export default function ShopSmall() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const navigate = useNavigate();
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    // Load favorites from localStorage if available
+    const stored = localStorage.getItem("favorites");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+  
   const [cart, setCart] = useState(() => {
     // Load cart from localStorage if available
     const stored = localStorage.getItem("cart");

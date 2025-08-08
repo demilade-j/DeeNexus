@@ -128,8 +128,8 @@ export default function MainShopBg() {
             </article>
             <br />
             <form action="">
-                <input type="search" className='border-amber-400 h-12 w-full rounded-3xl border-1 flex items-center px-7 pe-15 ouline-1 outline-amber-400' placeholder='Search...' />
-                <span><Search className='hover:text-amber-400 absolute -mt-9 ml-[23.3%]'/></span>
+                <input type="search" onClick={()=>navigate('/search')} className='border-amber-400 h-12 w-full rounded-3xl border-1 flex items-center px-7 pe-15 ouline-1 outline-amber-400' placeholder='Search...' />
+                {/* <span><Search className='hover:text-amber-400 absolute -mt-9 ml-[23.3%]'/></span> */}
             </form>
             <br />
 

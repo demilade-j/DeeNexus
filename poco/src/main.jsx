@@ -2,9 +2,6 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../src/index.css";
-// import Loader from "./Components/Main Components/Loader";
-
-
 
 import App from "./App";
 import Home from "./Components/Main Components/Home";
@@ -23,33 +20,6 @@ import SucOrder from "./Components/Main Components/SucOrder";
 import ThemeContext2 from "./Components/TRYFOLDER/ThemeContext2";
 import SearchBar from "./Components/Main Components/SearchBar";
 
-
-
-// const SuspenseWithMinDelay = ({ children, fallback, minDelay = 3000, maxDelay = 10000 }) => {
-//   const [isMinDelayPassed, setIsMinDelayPassed] = useState(false);
-
-//   useEffect(() => {
-//     let adjustedDelay = minDelay;
-//     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
-//     if (connection.effectiveType) {
-//       if (connection.effectiveType === "slow-2g" || connection.effectiveType === "2g") {
-//         adjustedDelay = minDelay * 2;
-//       } else if (connection.effectiveType === "3g") {
-//         adjustedDelay = minDelay * 1.5;
-//       }
-//     }
-
-//     adjustedDelay = Math.min(adjustedDelay, maxDelay);
-
-//     const timer = setTimeout(() => {
-//       setIsMinDelayPassed(true);
-//     }, adjustedDelay);
-
-//     return () => clearTimeout(timer);
-//   }, [minDelay, maxDelay]);
-
-//   return <Suspense fallback={fallback}>{isMinDelayPassed ? children : fallback}</Suspense>;
-// };
 
 const router = createBrowserRouter([
   {
@@ -78,9 +48,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <SuspenseWithMinDelay fallback={<Loader />} minDelay={2000} maxDelay={5000}>
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
-  /* </SuspenseWithMinDelay> */
 );

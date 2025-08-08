@@ -21,6 +21,15 @@ export default function CheckoutHero1() {
   const [tenthInput, setTenthInput] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [color, setColor] = useState(false);
+  const [cart, setCart] = useState(() => {
+    // Load cart from localStorage if available
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
     if (
@@ -51,6 +60,13 @@ export default function CheckoutHero1() {
     ninthInput,
     tenthInput,
   ]);
+
+  const totalAmount = cart
+    .reduce((acc, item) => {
+      const price = parseFloat(item.price.replace("£", ""));
+      return acc + price * item.quantity;
+    }, 0)
+    .toFixed(2);
 
   return (
     <div className="flex flex-col py-15 px-7">
@@ -383,6 +399,23 @@ export default function CheckoutHero1() {
             <span>Product</span>
             <span>Subtotal</span>
           </h1>
+
+          <article className="flex flex-col w-full">{
+            cart.map((cart,index)=>(
+              <article key={index} className="flex justify-between items-center px-4 rounded-sm h-15 text-lg even:bg-gray-50 font-bold">
+                <span className="flex gap-4">
+              {cart.name} <p className="font-normal text-amber-400"> x {cart.quantity}</p> 
+              </span>
+              <p>{cart.price}</p>
+              </article>
+            ))
+            }</article>
+            <br />
+            <p className="flex font-extrabold px-3 justify-between items-center h-17 text-amber-400 text-2xl border-t-3 border-b-3 border-amber-500">
+              <span>TOTAL =</span>
+            {totalAmount}
+            </p>
+            <br /><br />
 
           <article className="flex gap-1 items-center border-b-1 border-gray-300 h-14 text-[1.2rem] font-semibold">
             <input

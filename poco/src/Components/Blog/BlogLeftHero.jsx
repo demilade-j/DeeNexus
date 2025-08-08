@@ -104,31 +104,3 @@ export default function BlogLeftHero() {
     </main>
   );
 }
-
-// export default function BlogSearch() {
-//   return (
-//     <div className="p-4">
-//       <input
-
-//         type="text"
-//         placeholder="Search blog..."
-//         value={searchTerm}
-//         onChange={(e) => setSearchTerm(e.target.value)}
-//         className="border border-gray-400 p-2 mb-4 w-full rounded"
-//       />
-
-//       {filteredBlogs.length === 0 ? (
-//         <p>No results found.</p>
-//       ) : (
-//         filteredBlogs.map((item) => (
-//           <div key={item.id} className="mb-6 border p-4 rounded shadow">
-//             <img src={item.src} alt={item.name} className="w-full h-48 object-cover rounded" />
-//             <h2 className="text-xl font-bold mt-2">{item.name}</h2>
-//             <h3 className="text-md italic">{item.descript1}</h3>
-//             <p className="text-sm">{item.descript2}</p>
-//           </div>
-//         ))
-//       )}
-//     </div>
-//   );
-// }

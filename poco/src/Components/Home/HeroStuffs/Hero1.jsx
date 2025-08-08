@@ -5,10 +5,10 @@ export default function Hero1() {
     <main className="bg-[#754628] p-20  text-white pt-48 px-10 justify-between md:grid-cols-1 lg:flex grid-cols-1 sm:grid-cols-1 sm:items-center sm:justify-center md:items-center md:justify-center hero-1">
       <div className="flex flex-col items-center justify-center lg:flex lg:flex-col lg:items-start">
         <img className="absolute ml-50 hero-1-onion md:mt-[-79%] md:ml-[-30rem] lg:mt-[-23%] lg:ml-[48%]" src="/onion hero.png"/>
-        <img className="absolute  mt-20 ml-40 lg:ml-[40%] lg:mt-[-34%] hero-1-discount md:mt-[-2%]" src="/50off poco.png"/>
+        <img className="absolute  mt-170 ml-40 lg:ml-[40%] lg:mt-[-34%] hero-1-discount md:mt-[80%]" src="/50off poco.png"/>
         <img width={200} className="absolute z-7 ml-300 mt-[-11.4rem] hero-1-tomato lg:hidden sm:hidden md:flex md:ml-[30rem] md:mt-[-49rem] hidden" src="/Tomato Poco.png"/>
         <img width={50} className="absolute lg:ml-[89%] lg:mt-[35%] hero-leaf-btn sm:ml-12 ml-[50%]" src="/chilli 2.png"/>
-        <img width={150} className="absolute lg:ml-205 mt-[46%] md:ml-100 hero-1-chilli sm:ml-12 ml-[50%]" src="/Chilli 2 poco.png"/>
+        <img width={150} className="absolute lg:ml-205 hidden mt-[46%] md:ml-100 hero-1-chilli sm:ml-12 ml-[50%]" src="/Chilli 2 poco.png"/>
         <h2 className="text-amber-400 font-extrabold text-2xl text-[1.2rem] lg:text-[3rem] md:text-[1.8rem] sm:text-[1.5rem] hero-1-1st font-[Norican]">
           hot & special
         </h2>

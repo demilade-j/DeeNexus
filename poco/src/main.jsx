@@ -16,6 +16,7 @@ import Shop from "./Components/Main Components/Shop";
 import LazyLoader from "./Components/Main Components/Loader";
 import ShopBig from "./Components/Shop/ShopMain/ShopBig";
 import MainCheckout from "./Components/Main Components/MainCheckout";
+import RequireCheckout from "./Components/RequireCheckout";
 import SucOrder from "./Components/Main Components/SucOrder";
 import ThemeContext2 from "./Components/TRYFOLDER/ThemeContext2";
 import SearchBar from "./Components/Main Components/SearchBar";
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
       { path: "/shop", element: <Shop /> },
       { path: "/shop/big", element: <ShopBig /> },
       { path: "/loader", element: <LazyLoader /> },
-      { path: "/checkout1", element: <MainCheckout /> },
+      { path: "/checkout1", element: (
+          <RequireCheckout>
+            <MainCheckout />
+          </RequireCheckout>
+        ) },
       { path: "/sucOrder", element: <SucOrder /> },
       { path: "/search", element: <SearchBar /> },
       { path: "/context", element: <ThemeContext2 /> },

@@ -2,6 +2,8 @@ import { Heart, ShoppingBasketIcon, Star } from "lucide-react";
 import CartOnclick from "../../CartOnclick";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import FavoriteToggle from "../../FavoriteToggle";
+
 import FavOnclick from "../../FavOnclick";
 
 const productsApi = [
@@ -51,16 +53,7 @@ const productsApi = [
 
 export default function HomeMenu() {
   const [modal, setModal] = useState(false);
-  const [modal2, setModal2] = useState(false);
-  const [favorites, setFavorites] = useState(() => {
-    // Load favorites from localStorage if available
-    const stored = localStorage.getItem("favorites");
-    return stored ? JSON.parse(stored) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
+  // favorites are now managed globally via AppContext (use FavoriteToggle)
 
   const [cart, setCart] = useState(() => {
     // Load cart from localStorage if available
@@ -97,15 +90,9 @@ export default function HomeMenu() {
             className=" min-w-65 relative rounded-4xl h-120 bg-white cursor-pointer flex flex-col items-center justify-center group"
           >
             <br />
-            <button className="absolute mb-[20rem] z-40 ml-57 text-black duration-1000">
-              <FavOnclick
-                products={products} // or item
-                favorites={favorites}
-                setFavorites={setFavorites}
-                modal2={modal2}
-                setModal2={setModal2}
-              />
-            </button>
+            <div className="absolute top-3 right-3 z-40">
+              <FavoriteToggle product={products} />
+            </div>
             <br />
             <div className="mt-[2rem] w-60 group-hover:h-55 group-hover:bg-amber-400 group-hover:mt-[-4.2rem] right-0 bg-amber-100 duration-500  h-30 rounded-4xl flex items-center justify-center">
               <img

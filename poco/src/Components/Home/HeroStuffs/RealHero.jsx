@@ -31,46 +31,36 @@ export default function RealHero() {
   }
 
   useEffect(() => {
+  const timer = setTimeout(() => {
     if (hero === "Hero1") {
-      setTimeout(() => {
-        setHero("Hero2");
-        setCircleChange(
-          <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 "></div>
-        );
-        setCircleChange2(
-          <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 bg-amber-400"></div>
-        );
-      }, 9000);
-    } else {
+      // Switch to Hero2
+      setHero("Hero2");
       setCircleChange(
-        <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 bg-amber-400"></div>
+        <div className="rounded-full cursor-pointer size-4 border-2 border-amber-400 bg-amber-400"></div>
       );
       setCircleChange2(
-        <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 "></div>
+        <div className="rounded-full cursor-pointer size-4 border-2 border-amber-400"></div>
       );
+    } 
+    else if (hero === "Hero2") {
+      // Switch to Hero1
+      setHero("Hero1");
+      setCircleChange(
+        <div className="rounded-full cursor-pointer size-4 border-2 border-amber-400"></div>
+      );
+      setCircleChange2(
+        <div className="rounded-full cursor-pointer size-4 border-2 border-amber-400 bg-amber-400"></div>
+      );
+    } 
+    else {
+      // Default fallback (if somehow state is invalid)
+      setHero("Hero1");
     }
-  }, [hero]);
+  }, 9000);
 
-  useEffect(() => {
-    if (hero === "Hero2") {
-      setTimeout(() => {
-        setHero("Hero1");
-        setCircleChange(
-          <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 bg-amber-400"></div>
-        );
-        setCircleChange2(
-          <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 "></div>
-        );
-      }, 9000);
-    } else {
-      setCircleChange(
-        <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 "></div>
-      );
-      setCircleChange2(
-        <div className="rounded-full cursor-pointer size-4 border-2  border-amber-400 bg-amber-400"></div>
-      );
-    }
-  }, [hero]);
+  return () => clearTimeout(timer);
+}, [hero]);
+
 
   const renderHero = () => {
     switch (hero) {

@@ -78,13 +78,13 @@ export default function ContactNavBar() {
         </main>
         {/* <article className="flex gap-6">
           <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400">
-            <User fill="black" />
+            <User color="black" />
           </span>
           <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400">
-            <Heart fill="black" />
+            <Heart color="black" />
           </span>
           <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400">
-            <LucideShoppingBasket fill="black" />
+            <LucideShoppingBasket color="black" />
           </span>
         </article> */}
       </div>

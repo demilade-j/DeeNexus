@@ -1,31 +1,28 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ShoppingBasketIcon } from "lucide-react";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useApp } from "../Context/useApp";
 
-export default function CartOnclick({
-  products,
-  cart,
-  setCart,
-  modal,
-  setModal,
-}) {
+export default function CartOnclick({ products }) {
+  // 👇 all state comes from context instead of props
+  const { cart, setCart, cartModal, setCartModal } = useApp();
+
   const handleRemove = (name) => {
     setCart((prevCart) => prevCart.filter((item) => item.name !== name));
   };
 
   useEffect(() => {
-    if (modal) {
+    if (cartModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
 
-    // Cleanup on unmount just in case
     return () => {
       document.body.style.overflow = "";
     };
-  }, [modal]);
+  }, [cartModal]);
 
   const totalAmount = cart
     .reduce((acc, item) => {
@@ -39,26 +36,21 @@ export default function CartOnclick({
   return (
     <div>
       <div className="flex-flex-col gap-6">
-        {/* <h2 className="font-bold text-lg">{products.name}</h2> */}
-
-        <span className="flex gap-2 font-extrabold text-lg">
-          {/* <del className="text-gray-700">{products.deletedPrice}</del> */}
-          {/* <main className="text-amber-600">{products.price}</main> */}
-        </span>
+        <span className="flex gap-2 font-extrabold text-lg"></span>
       </div>
 
-      {modal && (
+      {cartModal && (
         <div
-          className="fixed inset-0 bg-[#0808081f] bg-opacity-50 z-[12000] "
-          onClick={() => setModal(false)}
+          className="fixed inset-0 bg-[#1e1d1be8] bg-opacity-100 z-[12000]"
+          onClick={() => setCartModal(false)}
         />
       )}
 
-      {modal && (
+      {cartModal && (
         <div>
           <div
             className={`fixed top-0 right-0 h-full overflow-x-hidden w-82 pr-4 px-3 bg-white text-black border-l-2 border-black z-19000 shadow transform transition-transform duration-190 ${
-              modal ? "-translate-x-0" : "-translate-x-full"
+              cartModal ? "-translate-x-0" : "-translate-x-full"
             }`}
           >
             <article className="flex items-center mt-10 justify-between">
@@ -75,7 +67,7 @@ export default function CartOnclick({
                   }, 100);
                 }}
                 onClick={() => {
-                  setModal(false);
+                  setCartModal(false);
                 }}
                 className="text-sm font-extrabold cursor-pointer text-red-600 hover:text-red-800"
               >
@@ -86,7 +78,7 @@ export default function CartOnclick({
             <hr className="text-gray-300 bg-gray-300" />
 
             {cart && cart.length > 0 ? (
-              <div className="flex flex-col gap-4 absolute p-2 h-130  overflow-x-hidden">
+              <div className="flex flex-col gap-4 absolute p-2 h-130 overflow-x-hidden">
                 {cart.map((item, index) => (
                   <nav
                     key={index}
@@ -94,7 +86,7 @@ export default function CartOnclick({
                   >
                     <span
                       onClick={() => handleRemove(item.name)}
-                      className="h-4 w-4 rounded-full text-amber-400 border-1 border-amber-500 flex items-center pb-1 justify-center"
+                      className="h-4 w-4 rounded-full text-amber-400 border-1 border-amber-500 flex items-center pb-1 justify-center cursor-pointer"
                     >
                       &times;
                     </span>
@@ -119,6 +111,7 @@ export default function CartOnclick({
                     </div>
                   </nav>
                 ))}
+
                 <main className="w-fit h-fit bg-white py-6 fixed bottom-0 flex flex-col gap-5">
                   <button className="z-40 w-70 flex items-center justify-between px-3 py-3 font-semibold border-1 border-gray-600">
                     SUBTOTAL PRICE: <span> £{totalAmount} </span>
@@ -134,11 +127,12 @@ export default function CartOnclick({
             ) : (
               <div className="flex flex-col gap-4 p-2 text-center text-gray-600 font-medium">
                 🛒 Cart is Empty
-                <DotLottieReact className="h-150 absolute ml-12 top-[-6%] w-[60%]"
-src="https://lottie.host/a624cba5-ace3-4b4b-ae5f-05157d308954/96DOD13mWR.lottie"
-loop
-autoplay
-/>
+                <DotLottieReact
+                  className="h-150 absolute ml-12 top-[-6%] w-[60%]"
+                  src="https://lottie.host/a624cba5-ace3-4b4b-ae5f-05157d308954/96DOD13mWR.lottie"
+                  loop
+                  autoplay
+                />
               </div>
             )}
           </div>
@@ -147,8 +141,8 @@ autoplay
 
       <span
         onClick={(e) => {
-          setModal(true);
           e.preventDefault();
+          setCartModal(true);
           setCart((prevCart) => {
             const existingItemIndex = prevCart.findIndex(
               (item) => item.name === products.name

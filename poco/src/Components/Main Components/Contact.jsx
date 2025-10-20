@@ -14,6 +14,7 @@ export default function Contact() {
        <AfterContactNavbar/>
        <ContactHero/>
        <AfterContactHero/>
+       <br />
        <ContactFooter/>
        <MediumDownNav/>
        <div className='sm:hidden md:flex lg:hidden hidden'>

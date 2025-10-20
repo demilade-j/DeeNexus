@@ -2,7 +2,7 @@ import { Donut, Hamburger, Store, Truck } from "lucide-react";
 
 export default function GreenHomeFooter() {
   return (
-    <div className="bg-green-700 px-10 flex-wrap py-7 text-white flex justify-center gap-20 items-center">
+    <div className="bg-green-700 px-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 py-7 text-white justify-center gap-20 items-center">
         <main className="flex flex-col gap-2 justify-center items-center">
             <article className="flex gap-5 items-center">
                 <span className="text-amber-400"><Truck size={43}/></span>

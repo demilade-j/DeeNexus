@@ -13,11 +13,11 @@ import BlogRightHero from "../../Blog/BlogRightHero";
 const products = [
   {
     id: 1,
-    name: "Trio Cheese Pizza",
+    name: "Trio Cheese",
     price: "£16.93",
     src: "/trio cheese.png",
     description:
-      "Mouth Watering Pepperoni,Cabanossi,Mushroom,all in one flavor.Absolutely one of ...",
+      "Mouth Watering Pepperoni,Cabanossi in one flavor.Absolutely one of ...",
   },
   {
     id: 2,
@@ -660,6 +660,10 @@ export default function ShopBig() {
       localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
+    const total = sortedProducts.length
+    const start = Math.floor(Math.random() * (total - 10))
+    const end = start + 10 
+
   return (
     <main>
       <NavHeader />
@@ -667,32 +671,27 @@ export default function ShopBig() {
       <AfterShopNavbar />
       <MediumDownNav />
       <article className="py-15 flex w-full">
-        <div className="w-[75%]">
-          <main className="w-[95%] flex items-center ps-10 justify-between ">
-            <article className="flex items-center justify-center gap-2 text-md text-gray-500">
-              Showing {sortedProducts.length} products
-            </article>
-
-            <article className="flex gap-10 items-center justify-center">
-              <main className="flex items-center justify-center gap-2">
-                <span
-                  onClick={() => {
-                    navigate("/shop/big");
-                  }}
-                  className="text-2xl cursor-pointer"
-                >
-                  <Logs fill="black" className="text-black" />
-                </span>
-
-                <span
-                  onClick={() => {
-                    navigate("/shop");
-                  }}
-                  className="text-2xl cursor-pointer"
-                >
-                  <LayoutGrid size={17} className="text-gray-400" />
-                </span>
-              </main>
+        <div className="w-full lg:w-[70%]">
+          <main className="flex items-center px-7 justify-between ">
+                  <article className="flex items-center justify-center gap-2 text-md text-gray-500">
+                    Showing {sortedProducts.length} products
+                  </article>
+          
+                  <article className="flex gap-10 items-center justify-center">
+                    <main className="lg:flex md:flex hidden items-center gap-2">
+                      <span
+                        onClick={() => navigate("/shop/big")}
+                        className="text-2xl cursor-pointer"
+                      >
+                        <Logs size={17} className="text-gray-400" />
+                      </span>
+                      <span
+                        onClick={() => navigate("/shop")}
+                        className="text-2xl cursor-pointer"
+                      >
+                        <LayoutGrid fill="black" size={20} className="text-black" />
+                      </span>
+                    </main>
 
               <select
                 onChange={handleSortChange}
@@ -707,7 +706,7 @@ export default function ShopBig() {
           </main>
           <br />
 
-          <main className="flex gap-3 w-full ps-2 flex-wrap">
+          <main className="flex gap-3 w-full px-7 flex-wrap">
             {sortedProducts.map((products) => (
               <article
                 key={products.id}
@@ -752,7 +751,53 @@ export default function ShopBig() {
           </main>
         </div>
 
-        <BlogRightHero />
+        <main className='hidden lg:flex md:hidden sm:hidden flex-col w-[30%] px-3 mt-32'>
+            <aside className='px-2'>
+            <article className='py-3 px-2 border-1 rounded-xl border-gray-500 flex flex-col gap-3'>
+                <h1 className='font-bold'>Categories</h1>
+
+                <div onClick={()=>{navigate('/shop')}} className='rounded-xl bg-pink-100 px-4 py-2 flex flex-col gap-1'>
+                    <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Burgers</p>(21)</span>
+                    <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Cold Drinks</p>(15)</span>
+                    <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Hot Drinks</p>(12)</span>
+                    <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Pasta</p>(20)</span>
+                    <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Pizza</p>(3)</span>
+                    <span className='border-b-1 border-dotted flex cursor-pointer py-1 text-[1.1rem] font-semibold hover:text-amber-400 items-center justify-between border-b-gray-600'><p>Uncategorized</p>(2)</span>
+                </div>
+            </article>
+            <br />
+            <form action="">
+                <input type="search" onClick={()=>navigate('/search')} className='border-amber-400 h-12 w-full rounded-3xl border-1 flex items-center px-7 pe-15 ouline-1 outline-amber-400' placeholder='Search...' />
+                {/* <span><Search className='hover:text-amber-400 absolute -mt-9 ml-[23.3%]'/></span> */}
+            </form>
+            <br />
+
+            <div className='px-1 flex flex-col gap-4'>
+                <h1 className='h-8 font-bold text-xl border-b-1 border-dotted'>Filter Search By Price</h1>
+                <input type="range" minLength={10} maxLength={10} className="text-amber-400 -mt-1 -mb-2 bg-amber-400" />
+                <div className='flex font-semibold text-lg text-gray-600'>Price: £0 — £20</div>
+                <button className="bg-amber-400 px-2 py-1 rounded-sm font-bold text-xl tracking-wider">Filter</button>
+                <br />
+
+                <h1 className='h-8 font-bold text-2xl border-b-1 border-dotted'>Best Deals</h1>
+                <div className='flex flex-col gap-9'>
+                    {products.slice(start,end) .map((products)=>(
+                    <article className='border-1 border-gray-800 bg-pink-50 py-2  gap-1 flex items-center justify-center rounded-xl' key={products.id}>
+                        <main className="w-[35%] h-36 rounded-xl bg-pink-400 flex items-center justify-center">
+                            <img className="size-25" src={products.src} alt={products.name} />
+                        </main>
+
+                        <main className="w-[60%] flex flex-col items-start justify-center">
+                            <h1 className="font-semibold">{products.name}</h1>
+                            <p className="w-full text-start">{products.description}</p>
+                            <p className="w-full flex gap-3"><del>{products.deletedPrice}</del> {products.price}</p>
+                        </main>
+                    </article>
+                    ))}
+                    </div>
+            </div>
+            </aside>
+        </main>
       </article>
     </main>
   );

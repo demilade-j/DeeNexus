@@ -13,7 +13,7 @@ const products = [
     price: "£16.93",
     src: "/trio cheese.png",
     description:
-      "Mouth Watering Pepperoni,Cabanossi,Mushroom,all in one flavor.Absolutely one of ...",
+      "Mouth Watering Pepperoni all in one flavor.Absolutely one of ",
   },
   {
     id: 2,
@@ -657,14 +657,14 @@ export default function ShopSmall() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
   return (
-    <div className="py-15 w-[75%]">
-      <main className="w-[95%] flex items-center ps-10 justify-between ">
+    <div className="py-15 lg:w-[70%] w-full">
+      <main className="flex items-center px-7 justify-between ">
         <article className="flex items-center justify-center gap-2 text-md text-gray-500">
           Showing {sortedProducts.length} products
         </article>
 
         <article className="flex gap-10 items-center justify-center">
-          <main className="flex items-center gap-2">
+          <main className="lg:flex md:flex hidden items-center gap-2">
             <span
               onClick={() => navigate("/shop/big")}
               className="text-2xl cursor-pointer"
@@ -681,7 +681,7 @@ export default function ShopSmall() {
 
           <select
             onChange={handleSortChange}
-            className="bg-pink-200 h-12 w-60 rounded-sm px-1 outline-none"
+            className="bg-pink-200 h-12 w-50 cursor-pointer rounded-sm px-1 outline-none"
           >
             <option value="default">Default Sorting</option>
             <option value="latest">Sort By Latest</option>
@@ -692,11 +692,11 @@ export default function ShopSmall() {
       </main>
       <br />
 
-      <main className="flex gap-3 w-full ps-2 flex-wrap">
+      <main className="grid gap-3 w-full px-5 lg:grid-cols-3 grid-cols-2">
         {sortedProducts.map((products) => (
           <article
             key={products.id}
-            className=" border-1 lg:w-[23.9%] w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
+            className=" border-1 w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
           >
             <br />
             <div className="absolute top-3 right-3 z-40">

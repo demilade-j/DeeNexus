@@ -105,14 +105,12 @@ export default function BigMenu4() {
   }, [cart]);
 
   return (
-    <div className="p-1 w-full">
-      <br />
-      <br />
-      <main className="flex gap-6 flex-wrap">
+    <div className="w-full">
+      <main className="lg:grid w-full lg:grid-cols-3 flex flex-wrap gap-4">
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 duration-700 cursor-pointer w-full lg:w-[32%] h-40 rounded-4xl border-gray-500 px-3 py-2"
+            className="border-1 w-[100%] h-40 rounded-4xl border-gray-500 px-3 py-2 duration-700 cursor-pointer"
           >
             <main className="w-full h-full flex gap-10 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img

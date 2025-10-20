@@ -8,6 +8,7 @@ import {
   PhoneIcon,
   Search,
   ShoppingBasketIcon,
+  ShoppingCart,
   X,
 } from "lucide-react";
 import { Gift, Heart, LucideShoppingBasket, Truck, User } from "lucide-react";
@@ -15,12 +16,23 @@ import { Link } from "react-router-dom";
 
 import NavLinks from "../Home/HomeNavStuff/NavLinks";
 import React, { useState, useEffect, useRef } from "react";
+import { useApp } from "../../Context/useApp";
+import FavOnclick from "../FavOnclick";
+import CartOnclick from "../CartOnclick";
 
 export default function ContactNavBar() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [showBar, setShowBar] = useState(true);
   const lastScrollY = useRef(0);
+
+  const { cart, favorites, cartModal, setCartModal, favModal, setFavModal } =
+    useApp();
+
+  const cartCount = Array.isArray(cart)
+    ? cart.reduce((acc, item) => acc + (item.quantity ?? 1), 0)
+    : 0;
+
   useEffect(() => {
     function handleScroll() {
       const currentScrollY = window.scrollY;
@@ -58,6 +70,13 @@ export default function ContactNavBar() {
         transition: "margin-top 0.3s ease",
       }}
     >
+      <div className="absolute -left-10">
+        {/* 💖 Favorites Modal */}
+        <FavOnclick modal2={favModal} setModal2={setFavModal} />
+
+        {/* 🛒 Cart Modal */}
+        <CartOnclick modal={cartModal} setModal={setCartModal} />
+      </div>
       <div className="bg-white h-18 md:text-black items-center px-5 text-black justify-between md:hidden sm:hidden lg:flex hidden">
         <h1 className="text-green-600 font-extrabold text-2xl">DeeNexus</h1>
         <NavLinks />
@@ -198,7 +217,7 @@ export default function ContactNavBar() {
           </div>
         </div>
         <div className="text-green-700 font-extrabold text-3xl">DeeNexus</div>
-        <a href="/50off poco.png" download>
+        <a href="tel:+7057723767">
           <PhoneCallIcon className="hover:text-amber-400" size={30} />
         </a>
       </span>
@@ -211,11 +230,31 @@ export default function ContactNavBar() {
           </article>
         </main>
         <main className="flex gap-4">
-          <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400">
-            <Search size={25} />
+          <span
+            title="Wishlist"
+            className="relative border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-full hover:bg-amber-400 transition"
+            onClick={() => setFavModal(true)}
+          >
+            <Heart color="black" fill="black" size={24} />
+            {favorites.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full px-1.5">
+                {favorites.length}
+              </span>
+            )}
           </span>
-          <span className="border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-[100%] hover:bg-amber-400">
-            <ShoppingBasketIcon size={25} fill="black" />
+
+          {/* 🛒 Cart */}
+          <span
+            title="Cart"
+            className="relative border-gray-500 border-2 h-10 w-10 flex items-center justify-center rounded-full hover:bg-amber-400 transition"
+            onClick={() => setCartModal(true)}
+          >
+            <ShoppingCart fill="black" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full px-1.5">
+                {cartCount}
+              </span>
+            )}
           </span>
         </main>
       </span>

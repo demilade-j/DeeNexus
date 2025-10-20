@@ -112,7 +112,6 @@ export default function MainShopBg() {
     <div className="flex">
       <ShopSmall />
       <main className='hidden lg:flex md:hidden sm:hidden flex-col w-[30%] px-3 mt-32'>
-
             <aside className='px-2'>
             <article className='py-3 px-2 border-1 rounded-xl border-gray-500 flex flex-col gap-3'>
                 <h1 className='font-bold'>Categories</h1>

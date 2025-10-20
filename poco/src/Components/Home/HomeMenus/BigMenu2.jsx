@@ -102,12 +102,12 @@ export default function BigMenu2() {
     }, [cart]);
   //  const { addToCart } = useCart();
   return (
-    <div className="w-full p-1">
-      <main className="flex gap-6 flex-wrap">
+    <div className="w-full">
+      <main className="lg:grid w-full lg:grid-cols-3 flex flex-wrap gap-4">
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 lg:w-[32%] md:w-full sm:w-full w-full h-40 rounded-4xl border-gray-500 px-3 py-2 duration-700 cursor-pointer"
+            className="border-1 w-[100%] h-40 rounded-4xl border-gray-500 px-3 py-2 duration-700 cursor-pointer"
           >
             <main className="w-full h-full flex gap-7 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img className="h-23" src={products.src} alt="" />

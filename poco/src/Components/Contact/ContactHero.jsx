@@ -2,7 +2,7 @@ import { Mail, MapPinCheckInside, Smartphone } from "lucide-react";
 
 export default function ContactHero() {
   return (
-    <div className="flex flex-col gap-6  pt-10">
+    <div className="flex flex-col gap-6 py-7W pt-10">
         <main className='flex flex-col gap-4 items-center justify-center'>
             <h1 className="font-extrabold text-[2.7rem]">Call us or visit place</h1>
             <p className="text-md">Contact us anytime! We're here to assist you with any inquiries.</p>

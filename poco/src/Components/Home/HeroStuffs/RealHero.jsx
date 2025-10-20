@@ -77,13 +77,13 @@ export default function RealHero() {
 
       <article>
         <span
-          className="absolute flex lg:mt-[-4%] lg:ml-[49%]  md:ml-[48.5%] md:mt-[-4%] sm:ml-[52%] sm:mt-[-4%] ml-[52.5%] mt-[-4%]"
+          className="absolute flex mt-[-7%] lg:ml-[49%]  md:ml-[48.5%] sm:ml-[52%] ml-[53%]"
           onClick={circleChange3}
         >
           {circleChange2}
         </span>
         <main
-          className="absolute flex lg:mt-[-4%] lg:ml-[51%]  md:ml-[51.5%] md:mt-[-4%] sm:ml-[48%] sm:mt-[-4%] ml-[47.5%] mt-[-4%]"
+          className="absolute flex mt-[-7%] lg:ml-[51%]  md:ml-[51.5%] sm:ml-[48%] ml-[47%]"
           onClick={circleChange4}
         >
           {circleChange}

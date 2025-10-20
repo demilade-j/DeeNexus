@@ -29,9 +29,9 @@ export default function AboutTalentedChefs() {
             <h2 className="text-5xl font-bold">Our Talented Chefs</h2>
         </main>
 
-        <main className="flex px-[1.5%] gap-5 justify-center items-center flex-wrap py-10">
+        <main className="grid px-10 gap-5 justify-center items-start lg:grid-cols-3 md:grid-cols-2 grid-cols-1 py-10">
         {Chefs.map((Chefs)=>(
-            <main className="h-170 md:w-[48%] lg:w-[32%] border-2 border-gray-500 rounded-lg relative hover:scale-95 duration-500 cursor-pointer group" key={Chefs.id}>
+            <main className="h-170 w-full border-2 border-gray-500 rounded-lg relative hover:scale-95 duration-500 cursor-pointer group" key={Chefs.id}>
                 <div className="group-hover:bg-[#212020] relative h-130 duration-500 cursor-pointer">
                 <img className="rounded-t-lg w-full h-[100%]  mix-blend-overlay " src={Chefs.src} alt="" />
                 </div>

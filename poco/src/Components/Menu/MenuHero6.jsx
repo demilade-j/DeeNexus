@@ -12,11 +12,11 @@ const products = [
   },
   {
     id: 2,
-    name: "Trio Cheese Pizza",
+    name: "Trio Cheese",
     price: "£16.93",
     src: "/trio cheese.png",
     description:
-      "Mouth Watering Pepperoni,Cabanossi,Mushroom,all in one flavor.Absolutely one of the best",
+      "Mouth Watering Pepperoni,Mushroom,all in one flavor.Absolutely one of the best",
   },
   {
     id: 3,
@@ -41,11 +41,11 @@ export default function MenuHero5() {
   }, [cart]);
   return (
     <div>
-      <main className="flex gap-6 flex-wrap px-5 items-center justify-center">
+      <main className="flex gap-6 flex-wrap px-5 items-center justify-start">
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 lg:w-[47%] h-75 md:w-full sm:w-full flex items-center justify-center w-full rounded-4xl border-gray-500 px-4 duration-700 cursor-pointer"
+            className="border-1 lg:w-[48%] h-95 md:w-full sm:w-full flex items-center justify-center w-full rounded-4xl border-gray-500 px-4 duration-700 cursor-pointer"
           >
             <main className="w-full h-[90%] flex gap-7 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img

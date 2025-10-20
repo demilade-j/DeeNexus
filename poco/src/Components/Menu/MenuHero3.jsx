@@ -144,11 +144,11 @@ export default function MenuHero3() {
   }, [cart]);
   return (
     <div>
-      <main className="flex gap-6 flex-wrap px-5 items-center justify-center">
+      <main className="flex gap-6 flex-wrap px-5 items-center justify-start">
         {products.map((products) => (
           <article
             key={products.id}
-            className="border-1 lg:w-[47%] h-75 md:w-full sm:w-full flex items-center justify-center w-full rounded-4xl border-gray-500 px-4 duration-700 cursor-pointer"
+            className="border-1 lg:w-[48%] h-95 md:w-full sm:w-full flex items-center justify-center w-full rounded-4xl border-gray-500 px-4 duration-700 cursor-pointer"
           >
             <main className="w-full h-[90%] flex gap-7 items-center relative justify-center bg-[#ffbbbb] rounded-4xl">
               <img

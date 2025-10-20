@@ -15,7 +15,7 @@ export default function AboutHero() {
             </Link>
         </main>
 
-        <main className="lg:w-[43%] lg:flex lg:flex-row sm:flex sm:flex-col sm:w-full sm:scale-100 sm:gap-4 gap-14 items-center justify-center">
+        <main className="lg:w-[43%] lg:flex lg:flex-row sm:flex flex flex-col sm:flex-col sm:w-full gap-5 items-center justify-center">
             <img className="lg:h-fit rounded-lg" src="/image1-h4.jpg" alt="" />
             <article className="flex flex-col gap-4">
                 <img className="rounded-lg lg:h-fit" src="/image2-h4.jpg" alt="" />

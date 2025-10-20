@@ -41,9 +41,9 @@ const Chefs=[
 
 export default function TeamHero() {
   return (
-    <div className="flex px-[1.5%] gap-5 justify-center items-center flex-wrap py-20">
+    <div className="px-7 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 justify-center items-center py-20">
         {Chefs.map((Chefs)=>(
-            <main className="h-170 md:w-[48%] lg:w-[32%] border-2 border-gray-500 rounded-lg relative hover:scale-95 duration-500 cursor-pointer group" key={Chefs.id}>
+            <main className="h-170 lg:w-full md:w-full w-[90%] border-2 border-gray-500 rounded-lg relative hover:scale-97 duration-500 cursor-pointer group" key={Chefs.id}>
                 <div className="group-hover:bg-[#212020] relative h-130 duration-500 cursor-pointer">
                 <img className="rounded-t-lg w-full h-[100%]  mix-blend-overlay " src={Chefs.src} alt="" />
                 </div>

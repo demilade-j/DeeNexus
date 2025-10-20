@@ -19,8 +19,8 @@ export default function AboutVideoPizza() {
 }, [open]);
   return (
     <div className='bg-[#272727]'>
-    <article className='absolute z-20 w-full h-[70%] flex flex-col gap-4 items-center justify-center'>
-        <div onClick={()=>{setOpen(true)}} className='bg-amber-400 hover:bg-amber-600 duration-500 h-20 w-20 rounded-full flex pt-2 hover:pt-0 hover:animate-bounce hover:scale-105 items-center justify-center'>
+    <article className='absolute lg:pt-0 pt-7 z-20 w-full h-[70%] flex flex-col gap-4 items-center justify-center'>
+        <div onClick={()=>{setOpen(true)}} className='bg-amber-400 lg:flex hidden hover:bg-amber-600 duration-500 h-20 w-20 rounded-full pt-2 hover:pt-0 hover:animate-bounce hover:scale-105 items-center justify-center'>
         <span><PlayIcon className='text-white pizzaAboutVideo' size={40} fill='white'/></span>
         </div>
         <h1 className='text-white text-6xl font-bold text-center'>Make the thing Anything is Possible</h1>
@@ -34,20 +34,21 @@ export default function AboutVideoPizza() {
 
 {open && (
         <div
-          className="fixed inset-0 bg-[#00000029] bg-opacity-50 z-40 "
+          className="fixed inset-0 bg-[#000000c9] bg-opacity-90 z-99990 "
           onClick={() => setOpen(false)}
         />
       )}
 
       <div
-        className={`fixed lg:top-50 lg:left-85 h-fit w-fit bg-black text-white z-50 shadow transform transition-transform duration-1000 ${
+        className={`fixed left-[20%] top-[20%] w-[60%] h-[60%] z-99999 text-white shadow transform transition-transform duration-1000 ${
           open ? '-translate-y-5' : '-translate-y-200'
         }`}
       >
-          <button onClick={() => setOpen(false)} className="text-4xl ml-230 absolute -mt-10 hover:text-amber-400 text-white">&times;</button>
+          <button onClick={() => setOpen(false)} className="text-4xl ml-[102%] absolute -mt-10 hover:text-amber-400">&times;</button>
           <iframe
-        width="900"
-        height="450"
+          className='w-full h-full'
+        // width="900"
+        // height="450"
         src="https://www.youtube.com/embed/sv3TXMSv6Lw"
         title="YouTube video player"
         frameBorder="0"

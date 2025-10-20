@@ -10,14 +10,14 @@ const products = [
     price: "£16.93",
     src: "/trio cheese.png",
     description:
-      "Mouth Watering Pepperoni,Cabanossi,Mushroom,all in one flavor.Absolutely one of ...",
+      "Mouth Watering Pepperoni,all in one flavor.Absolutely one of ...",
   },
   {
     id: 2,
     name: "BBQ Bacon Burger",
     price: "£6.99",
     description:
-      "Smoky BBQ sauce, crispy bacon, sharp cheddar, and a perfectly grilled beef patty. Messy but total...",
+      "Smoky BBQ sauce, sharp cheddar, and a perfectly grilled beef patty...",
     src: "/bbqbaconburger.webp",
   },
   {
@@ -637,7 +637,7 @@ export default function SearchBar() {
   }, [cart]);
 
   return (
-    <div className="flex items-center justify-between bg-white px-20 w-full py-10">
+    <div className="flex items-center justify-between bg-white px-6 w-full py-10">
       <form action="" className="flex flex-col gap-5 w-full">
         <span
           onClick={() => navigate(-1)}
@@ -658,11 +658,11 @@ export default function SearchBar() {
         {filteredSearch.length === 0 ? (
           <p>No results found.</p>
         ) : (
-          <main className="flex gap-3 w-full ps-2 flex-wrap">
+          <main className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-3 w-full ps-2 flex-wrap">
             {filteredSearch.map((products) => (
               <article
                 key={products.id}
-                className=" border-1 lg:w-[23.9%] w-full duration-700 border-gray-500 px-3 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
+                className=" border-1 w-full duration-700 border-gray-500 px-5 relative rounded-4xl h-130 bg-white cursor-pointer flex flex-col items-center justify-center group"
               >
                 <br />
                 <div className="absolute top-3 right-3 z-40">

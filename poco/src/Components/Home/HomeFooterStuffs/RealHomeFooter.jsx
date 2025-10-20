@@ -3,8 +3,8 @@ import { Facebook, GithubIcon, Linkedin, Twitter } from "lucide-react";
 export default function RealHomeFooter() {
   return (
     <div className="flex flex-col">
-        <main className="grid-cols-1 px-5 items-end justify-between py-20 lg:flex md:grid-cols-1 sm:grid-cols-1">
-            <article className="flex gap-20 items-end justify-center pt-18">
+        <main className="grid grid-cols-1 px-5 items-end justify-between py-20 lg:grid-cols-4 md:grid-cols-2 lg:gap-0 gap-7">
+            {/* <article className="grid lg:grid-cols-2 grid-cols-2 gap-20 items-end justify-center pt-18"> */}
                 <menu className="flex flex-col gap-1">
                     <h1 className="text-green-600 text-2xl font-bold">DeeNexus</h1>
                     <p>We believe it has the power to do <br /> amazing things</p>
@@ -17,9 +17,9 @@ export default function RealHomeFooter() {
                         <p><span className="font-bold text-lg">Address: </span>10 Musibau, <br /> Lagos 10001 Nigeria</p>
                         <p><span className="font-bold text-lg">Hours: </span>9.30am-6.30pm <br /> Monday to Saturday</p>
                     </memu>
-            </article>
+            {/* </article> */}
 
-            <article className = 'lg:flex lg:flex-row flex-wrap flex flex-col lg:w-fit w-full gap-20 justify-center items-center mr-35 lg:justify-end lg:items-end'>
+            {/* <article className = 'grid lg:grid-cols-4 grid-cols-2 lg:w-fit w-full gap-20 justify-center items-center lg:justify-end lg:items-end'> */}
                 <menu className="flex flex-col gap-1">
                     <h1 className="font-bold text-xl">USEFUL LINKS</h1>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">New Products</a>
@@ -29,14 +29,14 @@ export default function RealHomeFooter() {
                     <a href="#" className="cursor-pointer text-lg text-gray-800">Discount</a>
                 </menu>
 
-                <menu className="flex flex-col gap-1">
+                {/* <menu className="flex flex-col gap-1">
                     <h1 className="font-bold text-xl">MY ACCOUNT</h1>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">My Profile</a>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">My Order History</a>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">My Wish List</a>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">Order Tracking</a>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">Shopping Cart</a>
-                </menu>
+                </menu> */}
 
                 <menu className="flex flex-col gap-1">
                     <h1 className="font-bold text-xl">INFORMATION</h1>
@@ -46,11 +46,11 @@ export default function RealHomeFooter() {
                     <a href="#" className="cursor-pointer text-lg text-gray-800">Term of Use</a>
                     <a href="#" className="cursor-pointer text-lg text-gray-800">Advertise</a>
                 </menu>
-            </article>
+            {/* </article> */}
         </main>
 
-        <main className="px-5 py-8 border-t-1 border-gray-400 flex items-center justify-between">
-            <article className="flex gap-8">
+        <main className="px-5 py-8 border-t-1 border-gray-400 flex items-center lg:justify-between md:justify-between justify-center">
+            <article className="lg:flex md:flex hidden gap-8">
               <span className="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"><Facebook fill="black" size={15}/></span>
               <span className="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"> <Twitter fill="black" size={15}/> </span>
               <span className="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"><Linkedin fill="black" size={15}/></span>
@@ -61,7 +61,7 @@ export default function RealHomeFooter() {
                 Copyright © 2025 <span className="text-amber-400 font-bold">Deenexus</span>. All Right Reserved
             </article>
 
-            <article>
+            <article className="lg:flex hidden">
                 <img src="/americanexpress.webp" alt="" />
             </article>
         </main>

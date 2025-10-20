@@ -42,7 +42,7 @@ export default function BigMenu() {
   };
 
   return (
-      <div className="p-15 flex flex-col gap-2 h-fit items-center">
+      <div className="py-15 lg:px-7 px-10 flex flex-col gap-2 h-fit items-center">
         <h1 className="text-amber-400 font-[Norican] font-bold text-3xl">Our Menu</h1>
         <h2 className="text-5xl font-bold flex flex-wrap text-center">What's Hot Today</h2>
 

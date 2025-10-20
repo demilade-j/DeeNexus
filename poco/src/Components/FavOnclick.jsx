@@ -1,6 +1,7 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import React, { useState, useEffect } from "react";
 import { useApp } from "../Context/useApp";
+import { ShoppingCart } from "lucide-react";
 
 export default function FavOnclick() {
   // ✅ Get everything from global context
@@ -100,10 +101,11 @@ export default function FavOnclick() {
                     <p className="text-sm text-gray-600">{formattedDate}</p>
                   </div>
                   <button
+                  title="Add to Cart"
                     onClick={() => handleAddToCart(item)}
-                    className="bg-amber-400 px-4 py-3 rounded-md text-sm font-bold"
+                    className="bg-amber-400 px-4 cursor-pointer py-3 rounded-md text-xs font-bold"
                   >
-                    ADD TO CART
+                    <ShoppingCart/>
                   </button>
                 </span>
               </nav>

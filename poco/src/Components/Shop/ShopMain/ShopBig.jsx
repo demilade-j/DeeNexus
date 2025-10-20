@@ -683,13 +683,13 @@ export default function ShopBig() {
                         onClick={() => navigate("/shop/big")}
                         className="text-2xl cursor-pointer"
                       >
-                        <Logs size={17} className="text-gray-400" />
+                        <Logs size={21} className="text-black" />
                       </span>
                       <span
                         onClick={() => navigate("/shop")}
                         className="text-2xl cursor-pointer"
                       >
-                        <LayoutGrid fill="black" size={20} className="text-black" />
+                        <LayoutGrid fill="black" size={20} className="text-gray-400" />
                       </span>
                     </main>
 

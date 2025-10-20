@@ -1,286 +1,294 @@
 @import "tailwindcss";
 
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+html,
+body {
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
 }
 
-
-.hero-1-1st{
-    animation: try 0.5s forwards linear;
+@layer base {
+  * {
+    font-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
 }
 
-@keyframes try{
-    0%{
-        opacity: 0;
-        transform: translateX(-5rem);
-    }
+.hero-1-1st {
+  animation: try 0.5s forwards linear;
 }
 
-.hero-1-2nd{
-    animation: try2 1s forwards linear;
+@keyframes try {
+  0% {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
 }
 
-@keyframes try2{
-    0%{
-        opacity: 0;
-        transform: translateX(-20rem);
-    }
+.hero-1-2nd {
+  animation: try2 1s forwards linear;
 }
 
-.hero-1-3rd{
-    animation: try3 1.7s forwards linear;
+@keyframes try2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-20rem);
+  }
 }
 
-@keyframes try3{
-    0%{
-        opacity: 0;
-        transform: translateX(-10rem);
-    }50%{
-        opacity: 0;
-        transform: translateX(-5rem);
-    }
+.hero-1-3rd {
+  animation: try3 1.7s forwards linear;
 }
 
-.hero-1-4th{
-    animation: try4 2.5s forwards linear;
+@keyframes try3 {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
 }
 
-@keyframes try4{
-    0%{
-        opacity: 1;
-        transform: translateX(-10rem);
-    }50%{
-        opacity: 0;
-        transform: translateX(-5rem);
-    }75%{
-        opacity: 0;
-        transform: translateX(-2rem);
-    }
+.hero-1-4th {
+  animation: try4 2.5s forwards linear;
 }
 
-.hero-btn{
-    animation: try5 2.8s forwards linear;
+@keyframes try4 {
+  0% {
+    opacity: 1;
+    transform: translateX(-10rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
+  75% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
 }
 
-@keyframes try5{
-    0%{
-        opacity: 0;
-        transform: translateX(-20rem);
-    }50%{
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
+.hero-btn {
+  animation: try5 2.8s forwards linear;
 }
 
-.hero-chicken{
-    animation: try6 1.7s forwards linear;
+@keyframes try5 {
+  0% {
+    opacity: 0;
+    transform: translateX(-20rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
 }
 
-@keyframes try6{
-    0%{
-        opacity: 0;
-        transform: translateX(0rem);
-}
-    50%{
-        opacity: 0;
-        transform: translateX(2rem);
-}
+.hero-chicken {
+  animation: try6 1.7s forwards linear;
 }
 
-.hero-leaf-btn{
-    animation: try7 1.7s forwards linear;
+@keyframes try6 {
+  0% {
+    opacity: 0;
+    transform: translateX(0rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
 }
 
-@keyframes try7{
-    0%{
-        opacity: 0;
-        transform: translateY(-10rem);
-}
-    50%{
-        opacity: 0;
-        transform: translateY(-5rem);
-}
+.hero-leaf-btn {
+  animation: try7 1.7s forwards linear;
 }
 
-.hero-1-onion{
-    animation: try8 2s forwards linear;
+@keyframes try7 {
+  0% {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
 }
 
-@keyframes try8{
-    0%{
-        opacity: 0;
-        transform: translateY(-5rem);
-}
+.hero-1-onion {
+  animation: try8 2s forwards linear;
 }
 
-.hero-1-discount{
-    animation: try9 1s forwards linear;
+@keyframes try8 {
+  0% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
 }
 
-@keyframes try9{
-    0%{
-        opacity: 0;
-        transform: translateX(-5rem);
-}
+.hero-1-discount {
+  animation: try9 1s forwards linear;
 }
 
-.hero-1-tomato{
-animation: try6 1.7s forwards linear;
+@keyframes try9 {
+  0% {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
 }
 
-@keyframes try6{
-    0%{
-        opacity: 0;
-        transform: translateX(0rem);
-}
-    50%{
-        opacity: 0;
-        transform: translateX(2rem);
-}
+.hero-1-tomato {
+  animation: try6 1.7s forwards linear;
 }
 
-.hero-1-chilli{
-animation: try10 1s forwards linear;
+@keyframes try6 {
+  0% {
+    opacity: 0;
+    transform: translateX(0rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
 }
 
-@keyframes try10{
-    0%{
-        opacity: 0;
-        transform: translateY(0rem);
-}
-    50%{
-        opacity: 0;
-        transform: translateY(2rem);
-}
+.hero-1-chilli {
+  animation: try10 1s forwards linear;
 }
 
-#modal{
-    animation: 2s modal linear forwards;
+@keyframes try10 {
+  0% {
+    opacity: 0;
+    transform: translateY(0rem);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
 }
 
-@keyframes modal{
-    0%{
-        transform: translateX(-10rem);
-    }
+#modal {
+  animation: 2s modal linear forwards;
+}
+
+@keyframes modal {
+  0% {
+    transform: translateX(-10rem);
+  }
 }
 
 .wrapTry {
   scrollbar-width: none;
 }
 
-.discoverMenuPizza{
-    animation:2s pizza forwards linear;
+.discoverMenuPizza {
+  animation: 2s pizza forwards linear;
 }
 
-@keyframes pizza{
-    0%{
-        transform:translateY(7rem) scale(0.8);
-    }
-    25%{
-        transform:translateY(-2rem) scale(1.05);
-    }
-    50%{
-        transform:translateY(5rem) scale(0.6);
-    }
-}
-
-.newletterLeft{
-    animation: bounce 2s reverse ;
-}
-
-.newletterRight{
-    animation: newletterRight 2s linear forwards;
-}
-
-@keyframes newletterRight{
-    0%{
-        transform: translateY(2rem) scale(0.9);
-    }25%{
-        transform: translateY(-2rem) scale(1.1);
-    }50%{
-        transform: translateY(2rem) scale(0.9);
-    }75%{
-        transform: translateY(-2rem) scale(1.1);
-    }
-}
-
-.messages{
-    animation: messages 1s linear forwards;
-}
-
-@keyframes messages{
-    0%{
-        transform: translateY(-0.2rem);
-    }
-}
-
-.pizzaAboutVideo{
-    animation: bounce 1s linear infinite;
-    background-color: rgb(48, 48, 48);
-}
-
-.groupAbtPizza2{
-    animation: groupAbtPizza2 2s linear forwards;
-}
-
-@keyframes groupAbtPizza2{
-    0%{
-        transform: translateY(-8rem);
-        opacity: 0;
-    }
-}
-
-.checkout1-Open{
-    animation: checkout1-Open 1s linear forwards;
-}
-
-@keyframes checkout1-Open{
-    0%{
-        transform: translateY(-1rem);
-        opacity: 0;
-    }
-}
-
-
-
-
-
-
-
-
-  @keyframes spinSlow {
-    0% {
-      transform: rotateX(0deg) rotateY(0deg);
-    }
-    100% {
-      transform: rotateX(360deg) rotateY(360deg);
-    }
+@keyframes pizza {
+  0% {
+    transform: translateY(7rem) scale(0.8);
   }
-
-  @keyframes gradientMove {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  25% {
+    transform: translateY(-2rem) scale(1.05);
   }
-
-  .animate-spinSlow {
-    animation: spinSlow 4s linear infinite;
-    transform-style: preserve-3d;
-    perspective: 800px;
+  50% {
+    transform: translateY(5rem) scale(0.6);
   }
+}
 
-  .animate-gradientMove {
-    background-size: 300% 300%;
-    animation: gradientMove 8s ease infinite;
-  }
+.newletterLeft {
+  animation: bounce 2s reverse;
+}
 
-  .glow-text {
-    text-shadow: 0 0 8px #fff, 0 0 15px #a855f7, 0 0 25px #9333ea;
+.newletterRight {
+  animation: newletterRight 2s linear forwards;
+}
+
+@keyframes newletterRight {
+  0% {
+    transform: translateY(2rem) scale(0.9);
   }
+  25% {
+    transform: translateY(-2rem) scale(1.1);
+  }
+  50% {
+    transform: translateY(2rem) scale(0.9);
+  }
+  75% {
+    transform: translateY(-2rem) scale(1.1);
+  }
+}
+
+.messages {
+  animation: messages 1s linear forwards;
+}
+
+@keyframes messages {
+  0% {
+    transform: translateY(-0.2rem);
+  }
+}
+
+.pizzaAboutVideo {
+  animation: bounce 1s linear infinite;
+  background-color: rgb(48, 48, 48);
+}
+
+.groupAbtPizza2 {
+  animation: groupAbtPizza2 2s linear forwards;
+}
+
+@keyframes groupAbtPizza2 {
+  0% {
+    transform: translateY(-8rem);
+    opacity: 0;
+  }
+}
+
+.checkout1-Open {
+  animation: checkout1-Open 1s linear forwards;
+}
+
+@keyframes checkout1-Open {
+  0% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+}
+
+@keyframes spinSlow {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-spinSlow {
+  animation: spinSlow 4s linear infinite;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.animate-gradientMove {
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+}
+
+.glow-text {
+  text-shadow: 0 0 8px #fff, 0 0 15px #a855f7, 0 0 25px #9333ea;
+}

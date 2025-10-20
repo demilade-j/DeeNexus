@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+
 .hero-1-1st{
     animation: try 0.5s forwards linear;
 }

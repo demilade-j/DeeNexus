@@ -89,7 +89,7 @@ export default function FavOnclick() {
                 >
                   &times;
                 </span>
-                <span className="flex items-center gap-3">
+                <span className="flex items-center justify-between gap-3">
                   <img
                     className="size-30 rounded-lg scale-80"
                     src={item.src}

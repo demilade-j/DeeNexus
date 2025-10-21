@@ -38,10 +38,10 @@ export default function NavHeader() {
       >
         <div className="md:flex flex justify-evenly gap-[10%] bg-black text-amber-50 h-18 items-center ps-5 pe-5">
         <section  className='lg:grid-cols-2 md:grid sm:hidden hidden lg:gap-4 md:gap-0.5'>
-        {/* <main className="flex gap-3 cursor-pointer hover:text-amber-400">
+        <main className="flex gap-3 cursor-pointer hover:text-amber-400">
             <article><MapPinCheck /></article>
             <article>Find a store</article>
-        </main> */}
+        </main>
 
         <main className="flex gap-3 cursor-pointer hover:text-amber-400">
             <article><Truck/></article>

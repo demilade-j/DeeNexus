@@ -1,17 +1,37 @@
 @import "tailwindcss";
 
-html,
-body {
+/* Force consistent font sizing on mobile browsers by disabling automatic
+   text inflation. This prevents browsers from enlarging text based on
+   device/OS accessibility font-size settings. Use with caution — it
+   may reduce accessibility for users who rely on larger system fonts. */
+html, body, input, textarea, select, button {
   -webkit-text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  /* Keep the base visual scale consistent across devices */
+  font-size: 100% !important;
+}
+
+/* Root font-size variables (use rems throughout the app for predictable sizing) */
+:root {
+  --root-font-size: 100%; /* locked to 100% by the rule above */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-base: 1rem; /* 16px */
+  --fs-lg: 1.125rem; /* 18px */
+  --fs-xl: 1.25rem; /* 20px */
+}
+
+html {
+  font-size: var(--root-font-size);
+}
+
+body {
+  font-size: 100%;
 }
 
 @layer base {
-  * {
-    font-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-  }
+  /* No-op base layer here — explicit text-size rules above handle mobile scaling */
 }
 
 .hero-1-1st {
